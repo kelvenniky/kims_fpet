@@ -40,6 +40,46 @@ def forward_block(self, x):
     x = x + self.drop_path(self.mlp(self.norm2(x))) + self.adapter_mlp(x) * self.s
     return x
 
+def _drop_path1(block, x):
+    return block.drop_path1(x) if hasattr(block, "drop_path1") else block.drop_path(x)
+
+
+def _drop_path2(block, x):
+    return block.drop_path2(x) if hasattr(block, "drop_path2") else block.drop_path(x)
+
+
+def mlp_residual(block, x):
+    # AdaptFormer blocks carry a parallel adapter next to the frozen MLP
+    out = x + _drop_path2(block, block.mlp(block.norm2(x)))
+    if hasattr(block, "adapter_mlp"):
+        out = out + block.adapter_mlp(x) * block.s
+    return out
+
+
+def forward_merge_branch(block, x):
+    """
+    Forward of the merging block for consistency training.
+    The attention is computed once on all tokens and shared; the block then returns
+    both the merged output (as in FPET) and the full-token output (no merging).
+    """
+    info = block._fpet_info
+    attn_size = info["size"] if info["prop_attn"] else None
+    x_attn, metric = block.attn(block.norm1(x), attn_size)
+    x = x + _drop_path1(block, x_attn)
+
+    x_full = mlp_residual(block, x)
+
+    metric = metric.detach()
+    metric = metric + 1 * block.refinement(metric)
+    merge = bipartite_diff_matching(
+        metric,
+        info["class_token"],
+        info["distill_token"],
+    )
+    x_merged, info["size"] = merge_wavg(merge, x, info["size"])
+    return mlp_residual(block, x_merged), x_full
+
+
 def forward_attn(self, x, size):
     B, N, C = x.shape
     qkv = self.qkv(x).reshape(B, N, 3, self.num_heads, C // self.num_heads).permute(2, 0, 3, 1, 4)
@@ -151,6 +191,44 @@ def make_fpet_class(transformer_class):
             self._fpet_info["source"] = None
 
             return super().forward(*args, **kwdargs)
+
+        def forward_two_branch(self, x: torch.Tensor):
+            """
+            Shared-prefix two-branch forward used for merge-consistency training.
+            Layers before the merging block (and its attention) run once; afterwards the
+            merged branch and the full-token branch run through the remaining blocks.
+
+            Returns (logits_merged, logits_full, feat_merged, feat_full).
+            The merged branch is numerically identical to the regular forward.
+            """
+            assert self.dist_token is None, "two-branch forward assumes no distillation token"
+            self._fpet_info["size"] = None
+            self._fpet_info["source"] = None
+
+            x = self.patch_embed(x)
+            cls_token = self.cls_token.expand(x.shape[0], -1, -1)
+            x = torch.cat((cls_token, x), dim=1)
+            x = self.pos_drop(x + self.pos_embed)
+
+            x_full = None
+            for blk in self.blocks:
+                if x_full is None:
+                    if hasattr(blk, "refinement"):
+                        x, x_full = forward_merge_branch(blk, x)
+                    else:
+                        x = blk(x)
+                else:
+                    x = blk(x)
+                    # the full branch has unit token sizes, so no proportional attention
+                    size = self._fpet_info["size"]
+                    self._fpet_info["size"] = None
+                    x_full = blk(x_full)
+                    self._fpet_info["size"] = size
+            assert x_full is not None, "no merging block found; set r_layer"
+
+            feat = self.pre_logits(self.norm(x)[:, 0])
+            feat_full = self.pre_logits(self.norm(x_full)[:, 0])
+            return self.head(feat), self.head(feat_full), feat, feat_full
 
     return FPETVisionTransformer
 

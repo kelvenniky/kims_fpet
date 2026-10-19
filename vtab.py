@@ -8,6 +8,7 @@ from torchvision import transforms
 import torch
 
 _DATASET_NAME = (
+    'resisc45',
     'cifar',
     'caltech101',
     'dtd',
@@ -17,7 +18,6 @@ _DATASET_NAME = (
     'sun397',
     'patch_camelyon',
     'eurosat',
-    'resisc45',
     'diabetic_retinopathy',
     'clevr_count',
     'clevr_dist',
@@ -30,7 +30,7 @@ _DATASET_NAME = (
 
 )
 
-_CLASSES_NUM = (100, 102, 47, 102, 37, 10, 397, 2, 10, 45, 5, 8, 6, 6, 4, 16, 16, 18, 9)
+_CLASSES_NUM = ( 45, 100, 102, 47, 102, 37, 10, 397, 2, 10, 5, 8, 6, 6, 4, 16, 16, 18, 9)
 
 
 def get_classes_num(dataset_name):
@@ -80,7 +80,7 @@ class ImageFilelist(data.Dataset):
 
 
 def get_data(name, normalize=True, batch_size=64, evaluate=True):
-    root = '/your/path/fpet/data/vtab-1k/' + name
+    root = os.path.join(os.environ.get('VTAB_ROOT', '/content/drive/MyDrive/kims_fpet/data/vtab-1k'), name)
     if normalize:
         transform = transforms.Compose([
             transforms.Resize((224, 224), interpolation=3),
