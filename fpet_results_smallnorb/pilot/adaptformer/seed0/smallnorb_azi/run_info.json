@@ -1,0 +1,49 @@
+{
+  "args": {
+    "seed": 0,
+    "bit": 32,
+    "dim": 8,
+    "scale": 1,
+    "lr": 0.001,
+    "wd": 0.0001,
+    "model": "vit_base_patch16_224_in21k",
+    "dataset": "smallnorb_azi",
+    "method": "adaptformer",
+    "eval": false,
+    "config_path": ".",
+    "model_path": "/content/drive/MyDrive/fpet_results/pilot/adaptformer/seed0",
+    "load_config": true,
+    "log_path": ".",
+    "r_layer": null,
+    "epochs": 100,
+    "eval_every": 10,
+    "consistency": false,
+    "cons_weight": 1.0,
+    "cons_temp": 1.0,
+    "full_ce_weight": 1.0,
+    "feat_weight": 0.0,
+    "full_every": 1,
+    "no_full_eval": false,
+    "no_latency": false,
+    "full_eval": false,
+    "best_acc": 0,
+    "best_ep": 0,
+    "best_acc_full": null
+  },
+  "env": {
+    "host": "281de637da27",
+    "platform": "Linux-6.6.122+-x86_64-with-glibc2.39",
+    "python": "3.13.15",
+    "torch": "2.11.0+cu130",
+    "timm": "0.4.12",
+    "cuda": "13.0",
+    "gpu": "Tesla T4",
+    "time": "2026-10-20 20:52:24",
+    "git": {
+      "commit": "6322d68a224565f6ff3b7e9d41a4c7c1d50506e1",
+      "dirty": false
+    }
+  },
+  "num_train": 1000,
+  "num_test": 12150
+}

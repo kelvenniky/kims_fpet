@@ -1,0 +1,17 @@
+{
+  "dataset": "cifar",
+  "run": "fpet-r2",
+  "method": "adaptformer",
+  "r_layer": 2,
+  "consistency": false,
+  "seed": 1,
+  "best_acc": 68.86999607086182,
+  "best_epoch": 89,
+  "best_acc_full_branch": 70.71999907493591,
+  "gflops": 10.474824704,
+  "latency_ms_per_img": 6.5067353037496405,
+  "params_total": 86027108,
+  "params_trainable": 228452,
+  "peak_train_mem_gb": 3.143831253051758,
+  "total_train_time_s": 3541.81862282753
+}

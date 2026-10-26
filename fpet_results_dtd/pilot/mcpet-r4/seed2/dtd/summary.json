@@ -1,0 +1,17 @@
+{
+  "dataset": "dtd",
+  "run": "mcpet-r4",
+  "method": "adaptformer",
+  "r_layer": 4,
+  "consistency": true,
+  "seed": 2,
+  "best_acc": 69.84042525291443,
+  "best_epoch": 89,
+  "best_acc_full_branch": 69.62765455245972,
+  "gflops": 11.953571072,
+  "latency_ms_per_img": 8.166997476170462,
+  "params_total": 85986351,
+  "params_trainable": 187695,
+  "peak_train_mem_gb": 7.056785583496094,
+  "total_train_time_s": 3656.6214711666107
+}

@@ -1,0 +1,17 @@
+{
+  "dataset": "smallnorb_azi",
+  "run": "adaptformer",
+  "method": "adaptformer",
+  "r_layer": null,
+  "consistency": false,
+  "seed": 1,
+  "best_acc": 34.66666638851166,
+  "best_epoch": 99,
+  "best_acc_full_branch": null,
+  "gflops": 17.59212288,
+  "latency_ms_per_img": 13.406969886273146,
+  "params_total": 85959954,
+  "params_trainable": 161298,
+  "peak_train_mem_gb": 5.546228408813477,
+  "total_train_time_s": 4185.677745103836
+}

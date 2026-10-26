@@ -1,0 +1,17 @@
+{
+  "dataset": "cifar",
+  "run": "adaptformer",
+  "method": "adaptformer",
+  "r_layer": null,
+  "consistency": false,
+  "seed": 1,
+  "best_acc": 72.15999960899353,
+  "best_epoch": 49,
+  "best_acc_full_branch": null,
+  "gflops": 17.592185856,
+  "latency_ms_per_img": 11.286475167920193,
+  "params_total": 86023012,
+  "params_trainable": 224356,
+  "peak_train_mem_gb": 5.547186374664307,
+  "total_train_time_s": 3445.876081943512
+}

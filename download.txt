@@ -1,0 +1,607 @@
+6.2s 1 0.00s - Debugger warning: It seems that frozen modules are being used, which may
+6.2s 2 0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off
+6.2s 3 0.00s - to python to disable frozen modules.
+6.2s 4 0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.
+6.8s 5 0.00s - Debugger warning: It seems that frozen modules are being used, which may
+6.8s 6 0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off
+6.8s 7 0.00s - to python to disable frozen modules.
+6.8s 8 0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.
+7.9s 9 Cloning into '/kaggle/working/kims_fpet'...
+8.9s 10 remote: Enumerating objects: 271, done.[K
+8.9s 11 remote: Counting objects:   0% (1/271)[Kremote: Counting objects:   1% (3/271)[Kremote: Counting objects:   2% (6/271)[Kremote: Counting objects:   3% (9/271)[Kremote: Counting objects:   4% (11/271)[Kremote: Counting objects:   5% (14/271)[Kremote: Counting objects:   6% (17/271)[Kremote: Counting objects:   7% (19/271)[Kremote: Counting objects:   8% (22/271)[Kremote: Counting objects:   9% (25/271)[Kremote: Counting objects:  10% (28/271)[Kremote: Counting objects:  11% (30/271)[Kremote: Counting objects:  12% (33/271)[Kremote: Counting objects:  13% (36/271)[Kremote: Counting objects:  14% (38/271)[Kremote: Counting objects:  15% (41/271)[Kremote: Counting objects:  16% (44/271)[Kremote: Counting objects:  17% (47/271)[Kremote: Counting objects:  18% (49/271)[Kremote: Counting objects:  19% (52/271)[Kremote: Counting objects:  20% (55/271)[Kremote: Counting objects:  21% (57/271)[Kremote: Counting objects:  22% (60/271)[Kremote: Counting objects:  23% (63/271)[Kremote: Counting objects:  24% (66/271)[Kremote: Counting objects:  25% (68/271)[Kremote: Counting objects:  26% (71/271)[Kremote: Counting objects:  27% (74/271)[Kremote: Counting objects:  28% (76/271)[Kremote: Counting objects:  29% (79/271)[Kremote: Counting objects:  30% (82/271)[Kremote: Counting objects:  31% (85/271)[Kremote: Counting objects:  32% (87/271)[Kremote: Counting objects:  33% (90/271)[Kremote: Counting objects:  34% (93/271)[Kremote: Counting objects:  35% (95/271)[Kremote: Counting objects:  36% (98/271)[Kremote: Counting objects:  37% (101/271)[Kremote: Counting objects:  38% (103/271)[Kremote: Counting objects:  39% (106/271)[Kremote: Counting objects:  40% (109/271)[Kremote: Counting objects:  41% (112/271)[Kremote: Counting objects:  42% (114/271)[Kremote: Counting objects:  43% (117/271)[Kremote: Counting objects:  44% (120/271)[Kremote: Counting objects:  45% (122/271)[Kremote: Counting objects:  46% (125/271)[Kremote: Counting objects:  47% (128/271)[Kremote: Counting objects:  48% (131/271)[Kremote: Counting objects:  49% (133/271)[Kremote: Counting objects:  50% (136/271)[Kremote: Counting objects:  51% (139/271)[Kremote: Counting objects:  52% (141/271)[Kremote: Counting objects:  53% (144/271)[Kremote: Counting objects:  54% (147/271)[Kremote: Counting objects:  55% (150/271)[Kremote: Counting objects:  56% (152/271)[Kremote: Counting objects:  57% (155/271)[Kremote: Counting objects:  58% (158/271)[Kremote: Counting objects:  59% (160/271)[Kremote: Counting objects:  60% (163/271)[Kremote: Counting objects:  61% (166/271)[Kremote: Counting objects:  62% (169/271)[Kremote: Counting objects:  63% (171/271)[Kremote: Counting objects:  64% (174/271)[Kremote: Counting objects:  65% (177/271)[Kremote: Counting objects:  66% (179/271)[Kremote: Counting objects:  67% (182/271)[Kremote: Counting objects:  68% (185/271)[Kremote: Counting objects:  69% (187/271)[Kremote: Counting objects:  70% (190/271)[Kremote: Counting objects:  71% (193/271)[Kremote: Counting objects:  72% (196/271)[Kremote: Counting objects:  73% (198/271)[Kremote: Counting objects:  74% (201/271)[Kremote: Counting objects:  75% (204/271)[Kremote: Counting objects:  76% (206/271)[Kremote: Counting objects:  77% (209/271)[Kremote: Counting objects:  78% (212/271)[Kremote: Counting objects:  79% (215/271)[Kremote: Counting objects:  80% (217/271)[Kremote: Counting objects:  81% (220/271)[Kremote: Counting objects:  82% (223/271)[Kremote: Counting objects:  83% (225/271)[Kremote: Counting objects:  84% (228/271)[Kremote: Counting objects:  85% (231/271)[Kremote: Counting objects:  86% (234/271)[Kremote: Counting objects:  87% (236/271)[Kremote: Counting objects:  88% (239/271)[Kremote: Counting objects:  89% (242/271)[Kremote: Counting objects:  90% (244/271)[Kremote: Counting objects:  91% (247/271)[Kremote: Counting objects:  92% (250/271)[Kremote: Counting objects:  93% (253/271)[Kremote: Counting objects:  94% (255/271)[Kremote: Counting objects:  95% (258/271)[Kremote: Counting objects:  96% (261/271)[Kremote: Counting objects:  97% (263/271)[Kremote: Counting objects:  98% (266/271)[Kremote: Counting objects:  99% (269/271)[Kremote: Counting objects: 100% (271/271)[Kremote: Counting objects: 100% (271/271), done.[K
+8.9s 12 remote: Compressing objects:   1% (1/84)[Kremote: Compressing objects:   2% (2/84)[Kremote: Compressing objects:   3% (3/84)[Kremote: Compressing objects:   4% (4/84)[Kremote: Compressing objects:   5% (5/84)[Kremote: Compressing objects:   7% (6/84)[Kremote: Compressing objects:   8% (7/84)[Kremote: Compressing objects:   9% (8/84)[Kremote: Compressing objects:  10% (9/84)[Kremote: Compressing objects:  11% (10/84)[Kremote: Compressing objects:  13% (11/84)[Kremote: Compressing objects:  14% (12/84)[Kremote: Compressing objects:  15% (13/84)[Kremote: Compressing objects:  16% (14/84)[Kremote: Compressing objects:  17% (15/84)[Kremote: Compressing objects:  19% (16/84)[Kremote: Compressing objects:  20% (17/84)[Kremote: Compressing objects:  21% (18/84)[Kremote: Compressing objects:  22% (19/84)[Kremote: Compressing objects:  23% (20/84)[Kremote: Compressing objects:  25% (21/84)[Kremote: Compressing objects:  26% (22/84)[Kremote: Compressing objects:  27% (23/84)[Kremote: Compressing objects:  28% (24/84)[Kremote: Compressing objects:  29% (25/84)[Kremote: Compressing objects:  30% (26/84)[Kremote: Compressing objects:  32% (27/84)[Kremote: Compressing objects:  33% (28/84)[Kremote: Compressing objects:  34% (29/84)[Kremote: Compressing objects:  35% (30/84)[Kremote: Compressing objects:  36% (31/84)[Kremote: Compressing objects:  38% (32/84)[Kremote: Compressing objects:  39% (33/84)[Kremote: Compressing objects:  40% (34/84)[Kremote: Compressing objects:  41% (35/84)[Kremote: Compressing objects:  42% (36/84)[Kremote: Compressing objects:  44% (37/84)[Kremote: Compressing objects:  45% (38/84)[Kremote: Compressing objects:  46% (39/84)[Kremote: Compressing objects:  47% (40/84)[Kremote: Compressing objects:  48% (41/84)[Kremote: Compressing objects:  50% (42/84)[Kremote: Compressing objects:  51% (43/84)[Kremote: Compressing objects:  52% (44/84)[Kremote: Compressing objects:  53% (45/84)[Kremote: Compressing objects:  54% (46/84)[Kremote: Compressing objects:  55% (47/84)[Kremote: Compressing objects:  57% (48/84)[Kremote: Compressing objects:  58% (49/84)[Kremote: Compressing objects:  59% (50/84)[Kremote: Compressing objects:  60% (51/84)[Kremote: Compressing objects:  61% (52/84)[Kremote: Compressing objects:  63% (53/84)[Kremote: Compressing objects:  64% (54/84)[Kremote: Compressing objects:  65% (55/84)[Kremote: Compressing objects:  66% (56/84)[Kremote: Compressing objects:  67% (57/84)[Kremote: Compressing objects:  69% (58/84)[Kremote: Compressing objects:  70% (59/84)[Kremote: Compressing objects:  71% (60/84)[Kremote: Compressing objects:  72% (61/84)[Kremote: Compressing objects:  73% (62/84)[Kremote: Compressing objects:  75% (63/84)[Kremote: Compressing objects:  76% (64/84)[Kremote: Compressing objects:  77% (65/84)[Kremote: Compressing objects:  78% (66/84)[Kremote: Compressing objects:  79% (67/84)[Kremote: Compressing objects:  80% (68/84)[Kremote: Compressing objects:  82% (69/84)[Kremote: Compressing objects:  83% (70/84)[Kremote: Compressing objects:  84% (71/84)[Kremote: Compressing objects:  85% (72/84)[Kremote: Compressing objects:  86% (73/84)[Kremote: Compressing objects:  88% (74/84)[Kremote: Compressing objects:  89% (75/84)[Kremote: Compressing objects:  90% (76/84)[Kremote: Compressing objects:  91% (77/84)[Kremote: Compressing objects:  92% (78/84)[Kremote: Compressing objects:  94% (79/84)[Kremote: Compressing objects:  95% (80/84)[Kremote: Compressing objects:  96% (81/84)[Kremote: Compressing objects:  97% (82/84)[Kremote: Compressing objects:  98% (83/84)[Kremote: Compressing objects: 100% (84/84)[Kremote: Compressing objects: 100% (84/84), done.[K
+8.9s 13 Receiving objects:   0% (1/271)Receiving objects:   1% (3/271)Receiving objects:   2% (6/271)Receiving objects:   3% (9/271)Receiving objects:   4% (11/271)Receiving objects:   5% (14/271)Receiving objects:   6% (17/271)Receiving objects:   7% (19/271)Receiving objects:   8% (22/271)Receiving objects:   9% (25/271)Receiving objects:  10% (28/271)Receiving objects:  11% (30/271)Receiving objects:  12% (33/271)Receiving objects:  13% (36/271)Receiving objects:  14% (38/271)Receiving objects:  15% (41/271)Receiving objects:  16% (44/271)Receiving objects:  17% (47/271)Receiving objects:  18% (49/271)Receiving objects:  19% (52/271)Receiving objects:  20% (55/271)Receiving objects:  21% (57/271)Receiving objects:  22% (60/271)Receiving objects:  23% (63/271)remote: Total 271 (delta 174), reused 271 (delta 174), pack-reused 0 (from 0)[K
+8.9s 14 Receiving objects:  24% (66/271)Receiving objects:  25% (68/271)Receiving objects:  26% (71/271)Receiving objects:  27% (74/271)Receiving objects:  28% (76/271)Receiving objects:  29% (79/271)Receiving objects:  30% (82/271)Receiving objects:  31% (85/271)Receiving objects:  32% (87/271)Receiving objects:  33% (90/271)Receiving objects:  34% (93/271)Receiving objects:  35% (95/271)Receiving objects:  36% (98/271)Receiving objects:  37% (101/271)Receiving objects:  38% (103/271)Receiving objects:  39% (106/271)Receiving objects:  40% (109/271)Receiving objects:  41% (112/271)Receiving objects:  42% (114/271)Receiving objects:  43% (117/271)Receiving objects:  44% (120/271)Receiving objects:  45% (122/271)Receiving objects:  46% (125/271)Receiving objects:  47% (128/271)Receiving objects:  48% (131/271)Receiving objects:  49% (133/271)Receiving objects:  50% (136/271)Receiving objects:  51% (139/271)Receiving objects:  52% (141/271)Receiving objects:  53% (144/271)Receiving objects:  54% (147/271)Receiving objects:  55% (150/271)Receiving objects:  56% (152/271)Receiving objects:  57% (155/271)Receiving objects:  58% (158/271)Receiving objects:  59% (160/271)Receiving objects:  60% (163/271)Receiving objects:  61% (166/271)Receiving objects:  62% (169/271)Receiving objects:  63% (171/271)Receiving objects:  64% (174/271)Receiving objects:  65% (177/271)Receiving objects:  66% (179/271)Receiving objects:  67% (182/271)Receiving objects:  68% (185/271)Receiving objects:  69% (187/271)Receiving objects:  70% (190/271)Receiving objects:  71% (193/271)Receiving objects:  72% (196/271)Receiving objects:  73% (198/271)Receiving objects:  74% (201/271)Receiving objects:  75% (204/271)Receiving objects:  76% (206/271)Receiving objects:  77% (209/271)Receiving objects:  78% (212/271)Receiving objects:  79% (215/271)Receiving objects:  80% (217/271)Receiving objects:  81% (220/271)Receiving objects:  82% (223/271)Receiving objects:  83% (225/271)Receiving objects:  84% (228/271)Receiving objects:  85% (231/271)Receiving objects:  86% (234/271)Receiving objects:  87% (236/271)Receiving objects:  88% (239/271)Receiving objects:  89% (242/271)Receiving objects:  90% (244/271)Receiving objects:  91% (247/271)Receiving objects:  92% (250/271)Receiving objects:  93% (253/271)Receiving objects:  94% (255/271)Receiving objects:  95% (258/271)Receiving objects:  96% (261/271)Receiving objects:  97% (263/271)Receiving objects:  98% (266/271)Receiving objects:  99% (269/271)Receiving objects: 100% (271/271)Receiving objects: 100% (271/271), 54.13 KiB | 1.80 MiB/s, done.
+8.9s 15 Resolving deltas:   0% (0/174)Resolving deltas:   1% (2/174)Resolving deltas:   2% (4/174)Resolving deltas:   3% (6/174)Resolving deltas:   4% (7/174)Resolving deltas:   5% (9/174)Resolving deltas:   6% (11/174)Resolving deltas:   7% (13/174)Resolving deltas:   8% (14/174)Resolving deltas:   9% (16/174)Resolving deltas:  10% (18/174)Resolving deltas:  11% (20/174)Resolving deltas:  12% (21/174)Resolving deltas:  13% (23/174)Resolving deltas:  14% (25/174)Resolving deltas:  15% (27/174)Resolving deltas:  16% (28/174)Resolving deltas:  17% (30/174)Resolving deltas:  18% (32/174)Resolving deltas:  20% (36/174)Resolving deltas:  21% (37/174)Resolving deltas:  22% (39/174)Resolving deltas:  23% (41/174)Resolving deltas:  24% (42/174)Resolving deltas:  25% (44/174)Resolving deltas:  26% (46/174)Resolving deltas:  27% (47/174)Resolving deltas:  28% (49/174)Resolving deltas:  29% (51/174)Resolving deltas:  30% (53/174)Resolving deltas:  31% (54/174)Resolving deltas:  32% (56/174)Resolving deltas:  33% (58/174)Resolving deltas:  34% (60/174)Resolving deltas:  35% (61/174)Resolving deltas:  36% (63/174)Resolving deltas:  37% (65/174)Resolving deltas:  38% (67/174)Resolving deltas:  39% (68/174)Resolving deltas:  40% (70/174)Resolving deltas:  41% (72/174)Resolving deltas:  42% (74/174)Resolving deltas:  43% (75/174)Resolving deltas:  44% (77/174)Resolving deltas:  45% (79/174)Resolving deltas:  46% (81/174)Resolving deltas:  47% (82/174)Resolving deltas:  48% (84/174)Resolving deltas:  49% (86/174)Resolving deltas:  50% (87/174)Resolving deltas:  51% (89/174)Resolving deltas:  52% (91/174)Resolving deltas:  53% (93/174)Resolving deltas:  54% (94/174)Resolving deltas:  55% (96/174)Resolving deltas:  56% (98/174)Resolving deltas:  57% (100/174)Resolving deltas:  58% (101/174)Resolving deltas:  59% (103/174)Resolving deltas:  60% (105/174)Resolving deltas:  61% (107/174)Resolving deltas:  62% (108/174)Resolving deltas:  63% (110/174)Resolving deltas:  64% (112/174)Resolving deltas:  65% (114/174)Resolving deltas:  66% (115/174)Resolving deltas:  67% (117/174)Resolving deltas:  68% (119/174)Resolving deltas:  70% (123/174)Resolving deltas:  71% (124/174)Resolving deltas:  72% (126/174)Resolving deltas:  73% (128/174)Resolving deltas:  74% (129/174)Resolving deltas:  75% (131/174)Resolving deltas:  77% (134/174)Resolving deltas:  78% (136/174)Resolving deltas:  79% (138/174)Resolving deltas:  80% (140/174)Resolving deltas:  81% (141/174)Resolving deltas:  82% (143/174)Resolving deltas:  83% (146/174)Resolving deltas:  84% (147/174)Resolving deltas:  85% (148/174)Resolving deltas:  86% (150/174)Resolving deltas:  87% (153/174)Resolving deltas:  88% (154/174)Resolving deltas:  89% (156/174)Resolving deltas:  90% (157/174)Resolving deltas:  91% (160/174)Resolving deltas:  92% (161/174)Resolving deltas:  93% (162/174)Resolving deltas:  94% (164/174)Resolving deltas:  95% (166/174)Resolving deltas:  96% (168/174)Resolving deltas:  97% (169/174)Resolving deltas:  98% (171/174)Resolving deltas:  99% (173/174)Resolving deltas: 100% (174/174)Resolving deltas: 100% (174/174), done.
+9.1s 16 /kaggle/working/kims_fpet
+11.6s 17 [?25l   [90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[0m [32m0.0/377.0 kB[0m [31m?[0m eta [36m-:--:--[0m[2K   [91m━━━━[0m[90m╺[0m[90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[0m [32m41.0/377.0 kB[0m [31m1.2 MB/s[0m eta [36m0:00:01[0m[2K   [91m━━━━━━━━━[0m[91m╸[0m[90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[0m [32m92.2/377.0 kB[0m [31m1.4 MB/s[0m eta [36m0:00:01[0m[2K   [91m━━━━━━━━━━━━━━━[0m[90m╺[0m[90m━━━━━━━━━━━━━━━━━━━━━━━━[0m [32m143.4/377.0 kB[0m [31m1.5 MB/s[0m eta [36m0:00:01[0m[2K   [91m━━━━━━━━━━━━━━━━━━━━━[0m[91m╸[0m[90m━━━━━━━━━━━━━━━━━━[0m [32m204.8/377.0 kB[0m [31m1.5 MB/s[0m eta [36m0:00:01[0m[2K   [91m━━━━━━━━━━━━━━━━━━━━━━━━━━━[0m[90m╺[0m[90m━━━━━━━━━━━━[0m [32m256.0/377.0 kB[0m [31m1.5 MB/s[0m eta [36m0:00:01[0m[2K   [91m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[0m[91m╸[0m[90m━━━━━━━[0m [32m307.2/377.0 kB[0m [31m1.6 MB/s[0m eta [36m0:00:01[0m[2K   [91m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[0m[90m╺[0m [32m368.6/377.0 kB[0m [31m1.6 MB/s[0m eta [36m0:00:01[0m[2K   [90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[0m [32m377.0/377.0 kB[0m [31m1.5 MB/s[0m eta [36m0:00:00[0m
+21.3s 18 [?25htotal 403141
+21.3s 19 -rw-rw-rw- 1 root root 412815506 Oct 22 17:34 ViT-B_16.npz
+131.5s 20 cifar -> /kaggle/input/datasets/husseingariba/fpet-assets/fpet-assets/cifar/cifar
+157.4s 21 dtd -> /kaggle/input/datasets/husseingariba/fpet-assets/fpet-assets/dtd/dtd
+226.6s 22 restored adaptformer seed0 smallnorb_azi
+279.5s 23 restored fpet-r2 seed0 smallnorb_azi
+332.7s 24 restored mcpet-r2 seed0 smallnorb_azi
+332.7s 25 result/pilot/adaptformer/seed0/smallnorb_azi/summary.json
+332.7s 26 result/pilot/fpet-r2/seed0/smallnorb_azi/summary.json
+332.7s 27 result/pilot/mcpet-r2/seed0/smallnorb_azi/summary.json
+332.9s 28 /kaggle/working/kims_fpet
+362.6s 29 Namespace(seed=1, bit=32, dim=8, scale=1, lr=0.001, wd=0.0001, model='vit_base_patch16_224_in21k', dataset='cifar', method='adaptformer', eval=False, config_path='.', model_path='./result/pilot/adaptformer/seed1', load_config=True, log_path='.', r_layer=None, epochs=100, eval_every=10, consistency=False, cons_weight=1.0, cons_temp=1.0, full_ce_weight=1.0, feat_weight=0.0, full_every=1, no_full_eval=False, no_latency=False)
+362.6s 30 Traceback (most recent call last):
+362.6s 31 File "/kaggle/working/kims_fpet/main.py", line 177, in <module>
+362.6s 32 vit = create_model(args.model, checkpoint_path='ViT-B_16.npz', drop_path_rate=0.1)
+362.6s 33 File "/usr/local/lib/python3.13/dist-packages/timm/models/factory.py", line 84, in create_model
+362.6s 34 load_checkpoint(model, checkpoint_path)
+362.6s 35 ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+362.6s 36 File "/usr/local/lib/python3.13/dist-packages/timm/models/helpers.py", line 51, in load_checkpoint
+362.6s 37 model.load_pretrained(checkpoint_path)
+362.6s 38 ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+362.6s 39 File "/usr/local/lib/python3.13/dist-packages/timm/models/vision_transformer.py", line 313, in load_pretrained
+362.6s 40 _load_weights(self, checkpoint_path, prefix)
+362.6s 41 ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+362.6s 42 File "/usr/local/lib/python3.13/dist-packages/torch/utils/_contextlib.py", line 124, in decorate_context
+362.6s 43 return func(*args, **kwargs)
+362.6s 44 File "/usr/local/lib/python3.13/dist-packages/timm/models/vision_transformer.py", line 413, in _load_weights
+362.6s 45 w = np.load(checkpoint_path)
+362.6s 46 File "/usr/local/lib/python3.13/dist-packages/numpy/lib/_npyio_impl.py", line 459, in load
+362.6s 47 fid = stack.enter_context(open(os.fspath(file), "rb"))
+362.6s 48 ~~~~^^^^^^^^^^^^^^^^^^^^^^^
+362.6s 49 IsADirectoryError: [Errno 21] Is a directory: 'ViT-B_16.npz'
+375.8s 50 Namespace(seed=1, bit=32, dim=8, scale=1, lr=0.001, wd=0.0001, model='vit_base_patch16_224_in21k', dataset='cifar', method='adaptformer', eval=False, config_path='.', model_path='./result/pilot/fpet-r2/seed1', load_config=True, log_path='.', r_layer=2, epochs=100, eval_every=10, consistency=False, cons_weight=1.0, cons_temp=1.0, full_ce_weight=1.0, feat_weight=0.0, full_every=1, no_full_eval=False, no_latency=False)
+375.8s 51 Traceback (most recent call last):
+375.8s 52 File "/kaggle/working/kims_fpet/main.py", line 177, in <module>
+375.8s 53 vit = create_model(args.model, checkpoint_path='ViT-B_16.npz', drop_path_rate=0.1)
+375.8s 54 File "/usr/local/lib/python3.13/dist-packages/timm/models/factory.py", line 84, in create_model
+375.8s 55 load_checkpoint(model, checkpoint_path)
+375.8s 56 ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+375.8s 57 File "/usr/local/lib/python3.13/dist-packages/timm/models/helpers.py", line 51, in load_checkpoint
+375.8s 58 model.load_pretrained(checkpoint_path)
+375.8s 59 ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+375.8s 60 File "/usr/local/lib/python3.13/dist-packages/timm/models/vision_transformer.py", line 313, in load_pretrained
+375.8s 61 _load_weights(self, checkpoint_path, prefix)
+375.8s 62 ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+375.8s 63 File "/usr/local/lib/python3.13/dist-packages/torch/utils/_contextlib.py", line 124, in decorate_context
+375.8s 64 return func(*args, **kwargs)
+375.8s 65 File "/usr/local/lib/python3.13/dist-packages/timm/models/vision_transformer.py", line 413, in _load_weights
+375.8s 66 w = np.load(checkpoint_path)
+375.8s 67 File "/usr/local/lib/python3.13/dist-packages/numpy/lib/_npyio_impl.py", line 459, in load
+375.8s 68 fid = stack.enter_context(open(os.fspath(file), "rb"))
+375.8s 69 ~~~~^^^^^^^^^^^^^^^^^^^^^^^
+375.8s 70 IsADirectoryError: [Errno 21] Is a directory: 'ViT-B_16.npz'
+386.9s 71 Namespace(seed=1, bit=32, dim=8, scale=1, lr=0.001, wd=0.0001, model='vit_base_patch16_224_in21k', dataset='cifar', method='adaptformer', eval=False, config_path='.', model_path='./result/pilot/mcpet-r2/seed1', load_config=True, log_path='.', r_layer=2, epochs=100, eval_every=10, consistency=True, cons_weight=1.0, cons_temp=1.0, full_ce_weight=1.0, feat_weight=0.0, full_every=1, no_full_eval=False, no_latency=False)
+386.9s 72 Traceback (most recent call last):
+386.9s 73 File "/kaggle/working/kims_fpet/main.py", line 177, in <module>
+386.9s 74 vit = create_model(args.model, checkpoint_path='ViT-B_16.npz', drop_path_rate=0.1)
+386.9s 75 File "/usr/local/lib/python3.13/dist-packages/timm/models/factory.py", line 84, in create_model
+386.9s 76 load_checkpoint(model, checkpoint_path)
+386.9s 77 ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+386.9s 78 File "/usr/local/lib/python3.13/dist-packages/timm/models/helpers.py", line 51, in load_checkpoint
+386.9s 79 model.load_pretrained(checkpoint_path)
+386.9s 80 ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+386.9s 81 File "/usr/local/lib/python3.13/dist-packages/timm/models/vision_transformer.py", line 313, in load_pretrained
+386.9s 82 _load_weights(self, checkpoint_path, prefix)
+386.9s 83 ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+386.9s 84 File "/usr/local/lib/python3.13/dist-packages/torch/utils/_contextlib.py", line 124, in decorate_context
+386.9s 85 return func(*args, **kwargs)
+386.9s 86 File "/usr/local/lib/python3.13/dist-packages/timm/models/vision_transformer.py", line 413, in _load_weights
+386.9s 87 w = np.load(checkpoint_path)
+386.9s 88 File "/usr/local/lib/python3.13/dist-packages/numpy/lib/_npyio_impl.py", line 459, in load
+386.9s 89 fid = stack.enter_context(open(os.fspath(file), "rb"))
+386.9s 90 ~~~~^^^^^^^^^^^^^^^^^^^^^^^
+386.9s 91 IsADirectoryError: [Errno 21] Is a directory: 'ViT-B_16.npz'
+398.0s 92 Namespace(seed=1, bit=32, dim=8, scale=1, lr=0.001, wd=0.0001, model='vit_base_patch16_224_in21k', dataset='cifar', method='adaptformer', eval=False, config_path='.', model_path='./result/pilot/fpet-r4/seed1', load_config=True, log_path='.', r_layer=4, epochs=100, eval_every=10, consistency=False, cons_weight=1.0, cons_temp=1.0, full_ce_weight=1.0, feat_weight=0.0, full_every=1, no_full_eval=False, no_latency=False)
+398.0s 93 Traceback (most recent call last):
+398.0s 94 File "/kaggle/working/kims_fpet/main.py", line 177, in <module>
+398.0s 95 vit = create_model(args.model, checkpoint_path='ViT-B_16.npz', drop_path_rate=0.1)
+398.0s 96 File "/usr/local/lib/python3.13/dist-packages/timm/models/factory.py", line 84, in create_model
+398.0s 97 load_checkpoint(model, checkpoint_path)
+398.0s 98 ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+398.0s 99 File "/usr/local/lib/python3.13/dist-packages/timm/models/helpers.py", line 51, in load_checkpoint
+398.0s 100 model.load_pretrained(checkpoint_path)
+398.0s 101 ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+398.0s 102 File "/usr/local/lib/python3.13/dist-packages/timm/models/vision_transformer.py", line 313, in load_pretrained
+398.0s 103 _load_weights(self, checkpoint_path, prefix)
+398.0s 104 ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+398.0s 105 File "/usr/local/lib/python3.13/dist-packages/torch/utils/_contextlib.py", line 124, in decorate_context
+398.0s 106 return func(*args, **kwargs)
+398.0s 107 File "/usr/local/lib/python3.13/dist-packages/timm/models/vision_transformer.py", line 413, in _load_weights
+398.0s 108 w = np.load(checkpoint_path)
+398.0s 109 File "/usr/local/lib/python3.13/dist-packages/numpy/lib/_npyio_impl.py", line 459, in load
+398.0s 110 fid = stack.enter_context(open(os.fspath(file), "rb"))
+398.0s 111 ~~~~^^^^^^^^^^^^^^^^^^^^^^^
+398.0s 112 IsADirectoryError: [Errno 21] Is a directory: 'ViT-B_16.npz'
+409.1s 113 Namespace(seed=1, bit=32, dim=8, scale=1, lr=0.001, wd=0.0001, model='vit_base_patch16_224_in21k', dataset='cifar', method='adaptformer', eval=False, config_path='.', model_path='./result/pilot/mcpet-r4/seed1', load_config=True, log_path='.', r_layer=4, epochs=100, eval_every=10, consistency=True, cons_weight=1.0, cons_temp=1.0, full_ce_weight=1.0, feat_weight=0.0, full_every=1, no_full_eval=False, no_latency=False)
+409.1s 114 Traceback (most recent call last):
+409.1s 115 File "/kaggle/working/kims_fpet/main.py", line 177, in <module>
+409.1s 116 vit = create_model(args.model, checkpoint_path='ViT-B_16.npz', drop_path_rate=0.1)
+409.1s 117 File "/usr/local/lib/python3.13/dist-packages/timm/models/factory.py", line 84, in create_model
+409.1s 118 load_checkpoint(model, checkpoint_path)
+409.1s 119 ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+409.1s 120 File "/usr/local/lib/python3.13/dist-packages/timm/models/helpers.py", line 51, in load_checkpoint
+409.1s 121 model.load_pretrained(checkpoint_path)
+409.1s 122 ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+409.1s 123 File "/usr/local/lib/python3.13/dist-packages/timm/models/vision_transformer.py", line 313, in load_pretrained
+409.1s 124 _load_weights(self, checkpoint_path, prefix)
+409.1s 125 ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+409.1s 126 File "/usr/local/lib/python3.13/dist-packages/torch/utils/_contextlib.py", line 124, in decorate_context
+409.1s 127 return func(*args, **kwargs)
+409.1s 128 File "/usr/local/lib/python3.13/dist-packages/timm/models/vision_transformer.py", line 413, in _load_weights
+409.1s 129 w = np.load(checkpoint_path)
+409.1s 130 File "/usr/local/lib/python3.13/dist-packages/numpy/lib/_npyio_impl.py", line 459, in load
+409.1s 131 fid = stack.enter_context(open(os.fspath(file), "rb"))
+409.1s 132 ~~~~^^^^^^^^^^^^^^^^^^^^^^^
+409.1s 133 IsADirectoryError: [Errno 21] Is a directory: 'ViT-B_16.npz'
+410.8s 134 # Results under `./result/pilot`
+410.8s 135 
+410.8s 136 3 runs found. Accuracy = best top-1 test accuracy (%), mean±std over seeds when >1 seed.
+410.8s 137 
+410.8s 138 ## Accuracy
+410.8s 139 
+410.8s 140 | run | smallnorb_azi | Mean |
+410.8s 141 |---|---|---|
+410.8s 142 | adaptformer | 33.8 | 33.77 |
+410.8s 143 | fpet-r2 | 32.0 | 32.00 |
+410.8s 144 | mcpet-r2 | 34.7 | 34.74 |
+410.8s 145 
+410.8s 146 ## Efficiency and full-token branch
+410.8s 147 
+410.8s 148 GFLOPs and latency are inference costs of the deployed (merged) model; latency is ms/image at batch 256 and only comparable across runs on the same GPU. Peak memory and train time are for training. "Full-branch acc" is the same weights evaluated without merging.
+410.8s 149 
+410.8s 150 | run | GFLOPs | latency (ms/img) | peak train mem (GB) | train time (min) | trainable params (M) | mean acc | mean full-branch acc |
+410.8s 151 |---|---|---|---|---|---|---|---|
+410.8s 152 | adaptformer | 17.59 | 12.861 | 5.55 | 68.3 | 0.161 | 33.77 | - |
+410.8s 153 | fpet-r2 | 10.47 | 7.424 | 3.14 | 76.9 | 0.165 | 32.00 | 30.01 |
+410.8s 154 | mcpet-r2 | 10.47 | 7.461 | 7.44 | 110.3 | 0.165 | 34.74 | 34.81 |
+410.8s 155 
+410.8s 156 ## mcpet-r2 vs fpet-r2
+410.8s 157 
+410.8s 158 | dataset | fpet-r2 | mcpet-r2 | Δ |
+410.8s 159 |---|---|---|---|
+410.8s 160 | smallnorb_azi | 32.00 | 34.74 | +2.74 |
+410.8s 161 
+410.8s 162 Mean Δ = +2.74 over 1 datasets; mcpet-r2 wins 1, ties 0, loses 0.
+410.8s 163 
+410.8s 164 ## mcpet-r4 vs fpet-r4
+410.8s 165 
+410.8s 166 No datasets in common.
+410.8s 167 
+410.8s 168 ## mcpet-r4 vs adaptformer
+410.8s 169 
+410.8s 170 No datasets in common.
+420.6s 171 Namespace(seed=1, bit=32, dim=8, scale=1, lr=0.001, wd=0.0001, model='vit_base_patch16_224_in21k', dataset='dtd', method='adaptformer', eval=False, config_path='.', model_path='./result/pilot/adaptformer/seed1', load_config=True, log_path='.', r_layer=None, epochs=100, eval_every=10, consistency=False, cons_weight=1.0, cons_temp=1.0, full_ce_weight=1.0, feat_weight=0.0, full_every=1, no_full_eval=False, no_latency=False)
+420.6s 172 Traceback (most recent call last):
+420.6s 173 File "/kaggle/working/kims_fpet/main.py", line 177, in <module>
+420.6s 174 vit = create_model(args.model, checkpoint_path='ViT-B_16.npz', drop_path_rate=0.1)
+420.6s 175 File "/usr/local/lib/python3.13/dist-packages/timm/models/factory.py", line 84, in create_model
+420.6s 176 load_checkpoint(model, checkpoint_path)
+420.6s 177 ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+420.6s 178 File "/usr/local/lib/python3.13/dist-packages/timm/models/helpers.py", line 51, in load_checkpoint
+420.6s 179 model.load_pretrained(checkpoint_path)
+420.6s 180 ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+420.6s 181 File "/usr/local/lib/python3.13/dist-packages/timm/models/vision_transformer.py", line 313, in load_pretrained
+420.6s 182 _load_weights(self, checkpoint_path, prefix)
+420.6s 183 ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+420.6s 184 File "/usr/local/lib/python3.13/dist-packages/torch/utils/_contextlib.py", line 124, in decorate_context
+420.6s 185 return func(*args, **kwargs)
+420.6s 186 File "/usr/local/lib/python3.13/dist-packages/timm/models/vision_transformer.py", line 413, in _load_weights
+420.6s 187 w = np.load(checkpoint_path)
+420.6s 188 File "/usr/local/lib/python3.13/dist-packages/numpy/lib/_npyio_impl.py", line 459, in load
+420.6s 189 fid = stack.enter_context(open(os.fspath(file), "rb"))
+420.6s 190 ~~~~^^^^^^^^^^^^^^^^^^^^^^^
+420.6s 191 IsADirectoryError: [Errno 21] Is a directory: 'ViT-B_16.npz'
+431.8s 192 Namespace(seed=1, bit=32, dim=8, scale=1, lr=0.001, wd=0.0001, model='vit_base_patch16_224_in21k', dataset='dtd', method='adaptformer', eval=False, config_path='.', model_path='./result/pilot/fpet-r2/seed1', load_config=True, log_path='.', r_layer=2, epochs=100, eval_every=10, consistency=False, cons_weight=1.0, cons_temp=1.0, full_ce_weight=1.0, feat_weight=0.0, full_every=1, no_full_eval=False, no_latency=False)
+431.8s 193 Traceback (most recent call last):
+431.8s 194 File "/kaggle/working/kims_fpet/main.py", line 177, in <module>
+431.8s 195 vit = create_model(args.model, checkpoint_path='ViT-B_16.npz', drop_path_rate=0.1)
+431.8s 196 File "/usr/local/lib/python3.13/dist-packages/timm/models/factory.py", line 84, in create_model
+431.8s 197 load_checkpoint(model, checkpoint_path)
+431.8s 198 ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+431.8s 199 File "/usr/local/lib/python3.13/dist-packages/timm/models/helpers.py", line 51, in load_checkpoint
+431.8s 200 model.load_pretrained(checkpoint_path)
+431.8s 201 ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+431.8s 202 File "/usr/local/lib/python3.13/dist-packages/timm/models/vision_transformer.py", line 313, in load_pretrained
+431.8s 203 _load_weights(self, checkpoint_path, prefix)
+431.8s 204 ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+431.8s 205 File "/usr/local/lib/python3.13/dist-packages/torch/utils/_contextlib.py", line 124, in decorate_context
+431.8s 206 return func(*args, **kwargs)
+431.8s 207 File "/usr/local/lib/python3.13/dist-packages/timm/models/vision_transformer.py", line 413, in _load_weights
+431.8s 208 w = np.load(checkpoint_path)
+431.8s 209 File "/usr/local/lib/python3.13/dist-packages/numpy/lib/_npyio_impl.py", line 459, in load
+431.8s 210 fid = stack.enter_context(open(os.fspath(file), "rb"))
+431.8s 211 ~~~~^^^^^^^^^^^^^^^^^^^^^^^
+431.8s 212 IsADirectoryError: [Errno 21] Is a directory: 'ViT-B_16.npz'
+442.9s 213 Namespace(seed=1, bit=32, dim=8, scale=1, lr=0.001, wd=0.0001, model='vit_base_patch16_224_in21k', dataset='dtd', method='adaptformer', eval=False, config_path='.', model_path='./result/pilot/mcpet-r2/seed1', load_config=True, log_path='.', r_layer=2, epochs=100, eval_every=10, consistency=True, cons_weight=1.0, cons_temp=1.0, full_ce_weight=1.0, feat_weight=0.0, full_every=1, no_full_eval=False, no_latency=False)
+442.9s 214 Traceback (most recent call last):
+442.9s 215 File "/kaggle/working/kims_fpet/main.py", line 177, in <module>
+442.9s 216 vit = create_model(args.model, checkpoint_path='ViT-B_16.npz', drop_path_rate=0.1)
+442.9s 217 File "/usr/local/lib/python3.13/dist-packages/timm/models/factory.py", line 84, in create_model
+442.9s 218 load_checkpoint(model, checkpoint_path)
+442.9s 219 ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+442.9s 220 File "/usr/local/lib/python3.13/dist-packages/timm/models/helpers.py", line 51, in load_checkpoint
+442.9s 221 model.load_pretrained(checkpoint_path)
+442.9s 222 ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+442.9s 223 File "/usr/local/lib/python3.13/dist-packages/timm/models/vision_transformer.py", line 313, in load_pretrained
+442.9s 224 _load_weights(self, checkpoint_path, prefix)
+442.9s 225 ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+442.9s 226 File "/usr/local/lib/python3.13/dist-packages/torch/utils/_contextlib.py", line 124, in decorate_context
+442.9s 227 return func(*args, **kwargs)
+442.9s 228 File "/usr/local/lib/python3.13/dist-packages/timm/models/vision_transformer.py", line 413, in _load_weights
+442.9s 229 w = np.load(checkpoint_path)
+442.9s 230 File "/usr/local/lib/python3.13/dist-packages/numpy/lib/_npyio_impl.py", line 459, in load
+442.9s 231 fid = stack.enter_context(open(os.fspath(file), "rb"))
+442.9s 232 ~~~~^^^^^^^^^^^^^^^^^^^^^^^
+442.9s 233 IsADirectoryError: [Errno 21] Is a directory: 'ViT-B_16.npz'
+454.1s 234 Namespace(seed=1, bit=32, dim=8, scale=1, lr=0.001, wd=0.0001, model='vit_base_patch16_224_in21k', dataset='dtd', method='adaptformer', eval=False, config_path='.', model_path='./result/pilot/fpet-r4/seed1', load_config=True, log_path='.', r_layer=4, epochs=100, eval_every=10, consistency=False, cons_weight=1.0, cons_temp=1.0, full_ce_weight=1.0, feat_weight=0.0, full_every=1, no_full_eval=False, no_latency=False)
+454.1s 235 Traceback (most recent call last):
+454.1s 236 File "/kaggle/working/kims_fpet/main.py", line 177, in <module>
+454.1s 237 vit = create_model(args.model, checkpoint_path='ViT-B_16.npz', drop_path_rate=0.1)
+454.1s 238 File "/usr/local/lib/python3.13/dist-packages/timm/models/factory.py", line 84, in create_model
+454.1s 239 load_checkpoint(model, checkpoint_path)
+454.1s 240 ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+454.1s 241 File "/usr/local/lib/python3.13/dist-packages/timm/models/helpers.py", line 51, in load_checkpoint
+454.1s 242 model.load_pretrained(checkpoint_path)
+454.1s 243 ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+454.1s 244 File "/usr/local/lib/python3.13/dist-packages/timm/models/vision_transformer.py", line 313, in load_pretrained
+454.1s 245 _load_weights(self, checkpoint_path, prefix)
+454.1s 246 ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+454.1s 247 File "/usr/local/lib/python3.13/dist-packages/torch/utils/_contextlib.py", line 124, in decorate_context
+454.1s 248 return func(*args, **kwargs)
+454.1s 249 File "/usr/local/lib/python3.13/dist-packages/timm/models/vision_transformer.py", line 413, in _load_weights
+454.1s 250 w = np.load(checkpoint_path)
+454.1s 251 File "/usr/local/lib/python3.13/dist-packages/numpy/lib/_npyio_impl.py", line 459, in load
+454.1s 252 fid = stack.enter_context(open(os.fspath(file), "rb"))
+454.1s 253 ~~~~^^^^^^^^^^^^^^^^^^^^^^^
+454.1s 254 IsADirectoryError: [Errno 21] Is a directory: 'ViT-B_16.npz'
+465.2s 255 Namespace(seed=1, bit=32, dim=8, scale=1, lr=0.001, wd=0.0001, model='vit_base_patch16_224_in21k', dataset='dtd', method='adaptformer', eval=False, config_path='.', model_path='./result/pilot/mcpet-r4/seed1', load_config=True, log_path='.', r_layer=4, epochs=100, eval_every=10, consistency=True, cons_weight=1.0, cons_temp=1.0, full_ce_weight=1.0, feat_weight=0.0, full_every=1, no_full_eval=False, no_latency=False)
+465.2s 256 Traceback (most recent call last):
+465.2s 257 File "/kaggle/working/kims_fpet/main.py", line 177, in <module>
+465.2s 258 vit = create_model(args.model, checkpoint_path='ViT-B_16.npz', drop_path_rate=0.1)
+465.2s 259 File "/usr/local/lib/python3.13/dist-packages/timm/models/factory.py", line 84, in create_model
+465.2s 260 load_checkpoint(model, checkpoint_path)
+465.2s 261 ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+465.2s 262 File "/usr/local/lib/python3.13/dist-packages/timm/models/helpers.py", line 51, in load_checkpoint
+465.2s 263 model.load_pretrained(checkpoint_path)
+465.2s 264 ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+465.2s 265 File "/usr/local/lib/python3.13/dist-packages/timm/models/vision_transformer.py", line 313, in load_pretrained
+465.2s 266 _load_weights(self, checkpoint_path, prefix)
+465.2s 267 ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+465.2s 268 File "/usr/local/lib/python3.13/dist-packages/torch/utils/_contextlib.py", line 124, in decorate_context
+465.2s 269 return func(*args, **kwargs)
+465.2s 270 File "/usr/local/lib/python3.13/dist-packages/timm/models/vision_transformer.py", line 413, in _load_weights
+465.2s 271 w = np.load(checkpoint_path)
+465.2s 272 File "/usr/local/lib/python3.13/dist-packages/numpy/lib/_npyio_impl.py", line 459, in load
+465.2s 273 fid = stack.enter_context(open(os.fspath(file), "rb"))
+465.2s 274 ~~~~^^^^^^^^^^^^^^^^^^^^^^^
+465.2s 275 IsADirectoryError: [Errno 21] Is a directory: 'ViT-B_16.npz'
+466.9s 276 # Results under `./result/pilot`
+466.9s 277 
+466.9s 278 3 runs found. Accuracy = best top-1 test accuracy (%), mean±std over seeds when >1 seed.
+466.9s 279 
+466.9s 280 ## Accuracy
+466.9s 281 
+466.9s 282 | run | smallnorb_azi | Mean |
+466.9s 283 |---|---|---|
+466.9s 284 | adaptformer | 33.8 | 33.77 |
+466.9s 285 | fpet-r2 | 32.0 | 32.00 |
+466.9s 286 | mcpet-r2 | 34.7 | 34.74 |
+466.9s 287 
+466.9s 288 ## Efficiency and full-token branch
+466.9s 289 
+466.9s 290 GFLOPs and latency are inference costs of the deployed (merged) model; latency is ms/image at batch 256 and only comparable across runs on the same GPU. Peak memory and train time are for training. "Full-branch acc" is the same weights evaluated without merging.
+466.9s 291 
+466.9s 292 | run | GFLOPs | latency (ms/img) | peak train mem (GB) | train time (min) | trainable params (M) | mean acc | mean full-branch acc |
+466.9s 293 |---|---|---|---|---|---|---|---|
+466.9s 294 | adaptformer | 17.59 | 12.861 | 5.55 | 68.3 | 0.161 | 33.77 | - |
+466.9s 295 | fpet-r2 | 10.47 | 7.424 | 3.14 | 76.9 | 0.165 | 32.00 | 30.01 |
+466.9s 296 | mcpet-r2 | 10.47 | 7.461 | 7.44 | 110.3 | 0.165 | 34.74 | 34.81 |
+466.9s 297 
+466.9s 298 ## mcpet-r2 vs fpet-r2
+466.9s 299 
+466.9s 300 | dataset | fpet-r2 | mcpet-r2 | Δ |
+466.9s 301 |---|---|---|---|
+466.9s 302 | smallnorb_azi | 32.00 | 34.74 | +2.74 |
+466.9s 303 
+466.9s 304 Mean Δ = +2.74 over 1 datasets; mcpet-r2 wins 1, ties 0, loses 0.
+466.9s 305 
+466.9s 306 ## mcpet-r4 vs fpet-r4
+466.9s 307 
+466.9s 308 No datasets in common.
+466.9s 309 
+466.9s 310 ## mcpet-r4 vs adaptformer
+466.9s 311 
+466.9s 312 No datasets in common.
+476.7s 313 Namespace(seed=2, bit=32, dim=8, scale=1, lr=0.001, wd=0.0001, model='vit_base_patch16_224_in21k', dataset='cifar', method='adaptformer', eval=False, config_path='.', model_path='./result/pilot/adaptformer/seed2', load_config=True, log_path='.', r_layer=None, epochs=100, eval_every=10, consistency=False, cons_weight=1.0, cons_temp=1.0, full_ce_weight=1.0, feat_weight=0.0, full_every=1, no_full_eval=False, no_latency=False)
+476.7s 314 Traceback (most recent call last):
+476.7s 315 File "/kaggle/working/kims_fpet/main.py", line 177, in <module>
+476.7s 316 vit = create_model(args.model, checkpoint_path='ViT-B_16.npz', drop_path_rate=0.1)
+476.7s 317 File "/usr/local/lib/python3.13/dist-packages/timm/models/factory.py", line 84, in create_model
+476.7s 318 load_checkpoint(model, checkpoint_path)
+476.7s 319 ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+476.7s 320 File "/usr/local/lib/python3.13/dist-packages/timm/models/helpers.py", line 51, in load_checkpoint
+476.7s 321 model.load_pretrained(checkpoint_path)
+476.7s 322 ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+476.7s 323 File "/usr/local/lib/python3.13/dist-packages/timm/models/vision_transformer.py", line 313, in load_pretrained
+476.7s 324 _load_weights(self, checkpoint_path, prefix)
+476.7s 325 ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+476.7s 326 File "/usr/local/lib/python3.13/dist-packages/torch/utils/_contextlib.py", line 124, in decorate_context
+476.7s 327 return func(*args, **kwargs)
+476.7s 328 File "/usr/local/lib/python3.13/dist-packages/timm/models/vision_transformer.py", line 413, in _load_weights
+476.7s 329 w = np.load(checkpoint_path)
+476.7s 330 File "/usr/local/lib/python3.13/dist-packages/numpy/lib/_npyio_impl.py", line 459, in load
+476.7s 331 fid = stack.enter_context(open(os.fspath(file), "rb"))
+476.7s 332 ~~~~^^^^^^^^^^^^^^^^^^^^^^^
+476.7s 333 IsADirectoryError: [Errno 21] Is a directory: 'ViT-B_16.npz'
+487.9s 334 Namespace(seed=2, bit=32, dim=8, scale=1, lr=0.001, wd=0.0001, model='vit_base_patch16_224_in21k', dataset='cifar', method='adaptformer', eval=False, config_path='.', model_path='./result/pilot/fpet-r2/seed2', load_config=True, log_path='.', r_layer=2, epochs=100, eval_every=10, consistency=False, cons_weight=1.0, cons_temp=1.0, full_ce_weight=1.0, feat_weight=0.0, full_every=1, no_full_eval=False, no_latency=False)
+487.9s 335 Traceback (most recent call last):
+487.9s 336 File "/kaggle/working/kims_fpet/main.py", line 177, in <module>
+487.9s 337 vit = create_model(args.model, checkpoint_path='ViT-B_16.npz', drop_path_rate=0.1)
+487.9s 338 File "/usr/local/lib/python3.13/dist-packages/timm/models/factory.py", line 84, in create_model
+487.9s 339 load_checkpoint(model, checkpoint_path)
+487.9s 340 ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+487.9s 341 File "/usr/local/lib/python3.13/dist-packages/timm/models/helpers.py", line 51, in load_checkpoint
+487.9s 342 model.load_pretrained(checkpoint_path)
+487.9s 343 ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+487.9s 344 File "/usr/local/lib/python3.13/dist-packages/timm/models/vision_transformer.py", line 313, in load_pretrained
+487.9s 345 _load_weights(self, checkpoint_path, prefix)
+487.9s 346 ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+487.9s 347 File "/usr/local/lib/python3.13/dist-packages/torch/utils/_contextlib.py", line 124, in decorate_context
+487.9s 348 return func(*args, **kwargs)
+487.9s 349 File "/usr/local/lib/python3.13/dist-packages/timm/models/vision_transformer.py", line 413, in _load_weights
+487.9s 350 w = np.load(checkpoint_path)
+487.9s 351 File "/usr/local/lib/python3.13/dist-packages/numpy/lib/_npyio_impl.py", line 459, in load
+487.9s 352 fid = stack.enter_context(open(os.fspath(file), "rb"))
+487.9s 353 ~~~~^^^^^^^^^^^^^^^^^^^^^^^
+487.9s 354 IsADirectoryError: [Errno 21] Is a directory: 'ViT-B_16.npz'
+499.5s 355 Namespace(seed=2, bit=32, dim=8, scale=1, lr=0.001, wd=0.0001, model='vit_base_patch16_224_in21k', dataset='cifar', method='adaptformer', eval=False, config_path='.', model_path='./result/pilot/mcpet-r2/seed2', load_config=True, log_path='.', r_layer=2, epochs=100, eval_every=10, consistency=True, cons_weight=1.0, cons_temp=1.0, full_ce_weight=1.0, feat_weight=0.0, full_every=1, no_full_eval=False, no_latency=False)
+499.5s 356 Traceback (most recent call last):
+499.5s 357 File "/kaggle/working/kims_fpet/main.py", line 177, in <module>
+499.5s 358 vit = create_model(args.model, checkpoint_path='ViT-B_16.npz', drop_path_rate=0.1)
+499.5s 359 File "/usr/local/lib/python3.13/dist-packages/timm/models/factory.py", line 84, in create_model
+499.5s 360 load_checkpoint(model, checkpoint_path)
+499.5s 361 ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+499.5s 362 File "/usr/local/lib/python3.13/dist-packages/timm/models/helpers.py", line 51, in load_checkpoint
+499.5s 363 model.load_pretrained(checkpoint_path)
+499.5s 364 ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+499.5s 365 File "/usr/local/lib/python3.13/dist-packages/timm/models/vision_transformer.py", line 313, in load_pretrained
+499.5s 366 _load_weights(self, checkpoint_path, prefix)
+499.5s 367 ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+499.5s 368 File "/usr/local/lib/python3.13/dist-packages/torch/utils/_contextlib.py", line 124, in decorate_context
+499.5s 369 return func(*args, **kwargs)
+499.5s 370 File "/usr/local/lib/python3.13/dist-packages/timm/models/vision_transformer.py", line 413, in _load_weights
+499.5s 371 w = np.load(checkpoint_path)
+499.5s 372 File "/usr/local/lib/python3.13/dist-packages/numpy/lib/_npyio_impl.py", line 459, in load
+499.5s 373 fid = stack.enter_context(open(os.fspath(file), "rb"))
+499.5s 374 ~~~~^^^^^^^^^^^^^^^^^^^^^^^
+499.5s 375 IsADirectoryError: [Errno 21] Is a directory: 'ViT-B_16.npz'
+510.8s 376 Namespace(seed=2, bit=32, dim=8, scale=1, lr=0.001, wd=0.0001, model='vit_base_patch16_224_in21k', dataset='cifar', method='adaptformer', eval=False, config_path='.', model_path='./result/pilot/fpet-r4/seed2', load_config=True, log_path='.', r_layer=4, epochs=100, eval_every=10, consistency=False, cons_weight=1.0, cons_temp=1.0, full_ce_weight=1.0, feat_weight=0.0, full_every=1, no_full_eval=False, no_latency=False)
+510.8s 377 Traceback (most recent call last):
+510.8s 378 File "/kaggle/working/kims_fpet/main.py", line 177, in <module>
+510.8s 379 vit = create_model(args.model, checkpoint_path='ViT-B_16.npz', drop_path_rate=0.1)
+510.8s 380 File "/usr/local/lib/python3.13/dist-packages/timm/models/factory.py", line 84, in create_model
+510.8s 381 load_checkpoint(model, checkpoint_path)
+510.8s 382 ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+510.8s 383 File "/usr/local/lib/python3.13/dist-packages/timm/models/helpers.py", line 51, in load_checkpoint
+510.8s 384 model.load_pretrained(checkpoint_path)
+510.8s 385 ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+510.8s 386 File "/usr/local/lib/python3.13/dist-packages/timm/models/vision_transformer.py", line 313, in load_pretrained
+510.8s 387 _load_weights(self, checkpoint_path, prefix)
+510.8s 388 ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+510.8s 389 File "/usr/local/lib/python3.13/dist-packages/torch/utils/_contextlib.py", line 124, in decorate_context
+510.8s 390 return func(*args, **kwargs)
+510.8s 391 File "/usr/local/lib/python3.13/dist-packages/timm/models/vision_transformer.py", line 413, in _load_weights
+510.8s 392 w = np.load(checkpoint_path)
+510.8s 393 File "/usr/local/lib/python3.13/dist-packages/numpy/lib/_npyio_impl.py", line 459, in load
+510.8s 394 fid = stack.enter_context(open(os.fspath(file), "rb"))
+510.8s 395 ~~~~^^^^^^^^^^^^^^^^^^^^^^^
+510.8s 396 IsADirectoryError: [Errno 21] Is a directory: 'ViT-B_16.npz'
+522.1s 397 Namespace(seed=2, bit=32, dim=8, scale=1, lr=0.001, wd=0.0001, model='vit_base_patch16_224_in21k', dataset='cifar', method='adaptformer', eval=False, config_path='.', model_path='./result/pilot/mcpet-r4/seed2', load_config=True, log_path='.', r_layer=4, epochs=100, eval_every=10, consistency=True, cons_weight=1.0, cons_temp=1.0, full_ce_weight=1.0, feat_weight=0.0, full_every=1, no_full_eval=False, no_latency=False)
+522.1s 398 Traceback (most recent call last):
+522.1s 399 File "/kaggle/working/kims_fpet/main.py", line 177, in <module>
+522.1s 400 vit = create_model(args.model, checkpoint_path='ViT-B_16.npz', drop_path_rate=0.1)
+522.1s 401 File "/usr/local/lib/python3.13/dist-packages/timm/models/factory.py", line 84, in create_model
+522.1s 402 load_checkpoint(model, checkpoint_path)
+522.1s 403 ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+522.1s 404 File "/usr/local/lib/python3.13/dist-packages/timm/models/helpers.py", line 51, in load_checkpoint
+522.1s 405 model.load_pretrained(checkpoint_path)
+522.1s 406 ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+522.1s 407 File "/usr/local/lib/python3.13/dist-packages/timm/models/vision_transformer.py", line 313, in load_pretrained
+522.1s 408 _load_weights(self, checkpoint_path, prefix)
+522.1s 409 ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+522.1s 410 File "/usr/local/lib/python3.13/dist-packages/torch/utils/_contextlib.py", line 124, in decorate_context
+522.1s 411 return func(*args, **kwargs)
+522.1s 412 File "/usr/local/lib/python3.13/dist-packages/timm/models/vision_transformer.py", line 413, in _load_weights
+522.1s 413 w = np.load(checkpoint_path)
+522.1s 414 File "/usr/local/lib/python3.13/dist-packages/numpy/lib/_npyio_impl.py", line 459, in load
+522.1s 415 fid = stack.enter_context(open(os.fspath(file), "rb"))
+522.1s 416 ~~~~^^^^^^^^^^^^^^^^^^^^^^^
+522.1s 417 IsADirectoryError: [Errno 21] Is a directory: 'ViT-B_16.npz'
+524.0s 418 # Results under `./result/pilot`
+524.0s 419 
+524.0s 420 3 runs found. Accuracy = best top-1 test accuracy (%), mean±std over seeds when >1 seed.
+524.0s 421 
+524.0s 422 ## Accuracy
+524.0s 423 
+524.0s 424 | run | smallnorb_azi | Mean |
+524.0s 425 |---|---|---|
+524.0s 426 | adaptformer | 33.8 | 33.77 |
+524.0s 427 | fpet-r2 | 32.0 | 32.00 |
+524.0s 428 | mcpet-r2 | 34.7 | 34.74 |
+524.0s 429 
+524.0s 430 ## Efficiency and full-token branch
+524.0s 431 
+524.0s 432 GFLOPs and latency are inference costs of the deployed (merged) model; latency is ms/image at batch 256 and only comparable across runs on the same GPU. Peak memory and train time are for training. "Full-branch acc" is the same weights evaluated without merging.
+524.0s 433 
+524.0s 434 | run | GFLOPs | latency (ms/img) | peak train mem (GB) | train time (min) | trainable params (M) | mean acc | mean full-branch acc |
+524.0s 435 |---|---|---|---|---|---|---|---|
+524.0s 436 | adaptformer | 17.59 | 12.861 | 5.55 | 68.3 | 0.161 | 33.77 | - |
+524.0s 437 | fpet-r2 | 10.47 | 7.424 | 3.14 | 76.9 | 0.165 | 32.00 | 30.01 |
+524.0s 438 | mcpet-r2 | 10.47 | 7.461 | 7.44 | 110.3 | 0.165 | 34.74 | 34.81 |
+524.0s 439 
+524.0s 440 ## mcpet-r2 vs fpet-r2
+524.0s 441 
+524.0s 442 | dataset | fpet-r2 | mcpet-r2 | Δ |
+524.0s 443 |---|---|---|---|
+524.0s 444 | smallnorb_azi | 32.00 | 34.74 | +2.74 |
+524.0s 445 
+524.0s 446 Mean Δ = +2.74 over 1 datasets; mcpet-r2 wins 1, ties 0, loses 0.
+524.0s 447 
+524.0s 448 ## mcpet-r4 vs fpet-r4
+524.0s 449 
+524.0s 450 No datasets in common.
+524.0s 451 
+524.0s 452 ## mcpet-r4 vs adaptformer
+524.0s 453 
+524.0s 454 No datasets in common.
+533.9s 455 Namespace(seed=2, bit=32, dim=8, scale=1, lr=0.001, wd=0.0001, model='vit_base_patch16_224_in21k', dataset='dtd', method='adaptformer', eval=False, config_path='.', model_path='./result/pilot/adaptformer/seed2', load_config=True, log_path='.', r_layer=None, epochs=100, eval_every=10, consistency=False, cons_weight=1.0, cons_temp=1.0, full_ce_weight=1.0, feat_weight=0.0, full_every=1, no_full_eval=False, no_latency=False)
+533.9s 456 Traceback (most recent call last):
+533.9s 457 File "/kaggle/working/kims_fpet/main.py", line 177, in <module>
+533.9s 458 vit = create_model(args.model, checkpoint_path='ViT-B_16.npz', drop_path_rate=0.1)
+533.9s 459 File "/usr/local/lib/python3.13/dist-packages/timm/models/factory.py", line 84, in create_model
+533.9s 460 load_checkpoint(model, checkpoint_path)
+533.9s 461 ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+533.9s 462 File "/usr/local/lib/python3.13/dist-packages/timm/models/helpers.py", line 51, in load_checkpoint
+533.9s 463 model.load_pretrained(checkpoint_path)
+533.9s 464 ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+533.9s 465 File "/usr/local/lib/python3.13/dist-packages/timm/models/vision_transformer.py", line 313, in load_pretrained
+533.9s 466 _load_weights(self, checkpoint_path, prefix)
+533.9s 467 ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+533.9s 468 File "/usr/local/lib/python3.13/dist-packages/torch/utils/_contextlib.py", line 124, in decorate_context
+533.9s 469 return func(*args, **kwargs)
+533.9s 470 File "/usr/local/lib/python3.13/dist-packages/timm/models/vision_transformer.py", line 413, in _load_weights
+533.9s 471 w = np.load(checkpoint_path)
+533.9s 472 File "/usr/local/lib/python3.13/dist-packages/numpy/lib/_npyio_impl.py", line 459, in load
+533.9s 473 fid = stack.enter_context(open(os.fspath(file), "rb"))
+533.9s 474 ~~~~^^^^^^^^^^^^^^^^^^^^^^^
+533.9s 475 IsADirectoryError: [Errno 21] Is a directory: 'ViT-B_16.npz'
+545.0s 476 Namespace(seed=2, bit=32, dim=8, scale=1, lr=0.001, wd=0.0001, model='vit_base_patch16_224_in21k', dataset='dtd', method='adaptformer', eval=False, config_path='.', model_path='./result/pilot/fpet-r2/seed2', load_config=True, log_path='.', r_layer=2, epochs=100, eval_every=10, consistency=False, cons_weight=1.0, cons_temp=1.0, full_ce_weight=1.0, feat_weight=0.0, full_every=1, no_full_eval=False, no_latency=False)
+545.0s 477 Traceback (most recent call last):
+545.0s 478 File "/kaggle/working/kims_fpet/main.py", line 177, in <module>
+545.0s 479 vit = create_model(args.model, checkpoint_path='ViT-B_16.npz', drop_path_rate=0.1)
+545.0s 480 File "/usr/local/lib/python3.13/dist-packages/timm/models/factory.py", line 84, in create_model
+545.0s 481 load_checkpoint(model, checkpoint_path)
+545.0s 482 ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+545.0s 483 File "/usr/local/lib/python3.13/dist-packages/timm/models/helpers.py", line 51, in load_checkpoint
+545.0s 484 model.load_pretrained(checkpoint_path)
+545.0s 485 ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+545.0s 486 File "/usr/local/lib/python3.13/dist-packages/timm/models/vision_transformer.py", line 313, in load_pretrained
+545.0s 487 _load_weights(self, checkpoint_path, prefix)
+545.0s 488 ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+545.0s 489 File "/usr/local/lib/python3.13/dist-packages/torch/utils/_contextlib.py", line 124, in decorate_context
+545.0s 490 return func(*args, **kwargs)
+545.0s 491 File "/usr/local/lib/python3.13/dist-packages/timm/models/vision_transformer.py", line 413, in _load_weights
+545.0s 492 w = np.load(checkpoint_path)
+545.0s 493 File "/usr/local/lib/python3.13/dist-packages/numpy/lib/_npyio_impl.py", line 459, in load
+545.0s 494 fid = stack.enter_context(open(os.fspath(file), "rb"))
+545.0s 495 ~~~~^^^^^^^^^^^^^^^^^^^^^^^
+545.0s 496 IsADirectoryError: [Errno 21] Is a directory: 'ViT-B_16.npz'
+556.2s 497 Namespace(seed=2, bit=32, dim=8, scale=1, lr=0.001, wd=0.0001, model='vit_base_patch16_224_in21k', dataset='dtd', method='adaptformer', eval=False, config_path='.', model_path='./result/pilot/mcpet-r2/seed2', load_config=True, log_path='.', r_layer=2, epochs=100, eval_every=10, consistency=True, cons_weight=1.0, cons_temp=1.0, full_ce_weight=1.0, feat_weight=0.0, full_every=1, no_full_eval=False, no_latency=False)
+556.2s 498 Traceback (most recent call last):
+556.2s 499 File "/kaggle/working/kims_fpet/main.py", line 177, in <module>
+556.2s 500 vit = create_model(args.model, checkpoint_path='ViT-B_16.npz', drop_path_rate=0.1)
+556.2s 501 File "/usr/local/lib/python3.13/dist-packages/timm/models/factory.py", line 84, in create_model
+556.2s 502 load_checkpoint(model, checkpoint_path)
+556.2s 503 ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+556.2s 504 File "/usr/local/lib/python3.13/dist-packages/timm/models/helpers.py", line 51, in load_checkpoint
+556.2s 505 model.load_pretrained(checkpoint_path)
+556.2s 506 ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+556.2s 507 File "/usr/local/lib/python3.13/dist-packages/timm/models/vision_transformer.py", line 313, in load_pretrained
+556.2s 508 _load_weights(self, checkpoint_path, prefix)
+556.2s 509 ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+556.2s 510 File "/usr/local/lib/python3.13/dist-packages/torch/utils/_contextlib.py", line 124, in decorate_context
+556.2s 511 return func(*args, **kwargs)
+556.2s 512 File "/usr/local/lib/python3.13/dist-packages/timm/models/vision_transformer.py", line 413, in _load_weights
+556.2s 513 w = np.load(checkpoint_path)
+556.2s 514 File "/usr/local/lib/python3.13/dist-packages/numpy/lib/_npyio_impl.py", line 459, in load
+556.2s 515 fid = stack.enter_context(open(os.fspath(file), "rb"))
+556.2s 516 ~~~~^^^^^^^^^^^^^^^^^^^^^^^
+556.2s 517 IsADirectoryError: [Errno 21] Is a directory: 'ViT-B_16.npz'
+567.6s 518 Namespace(seed=2, bit=32, dim=8, scale=1, lr=0.001, wd=0.0001, model='vit_base_patch16_224_in21k', dataset='dtd', method='adaptformer', eval=False, config_path='.', model_path='./result/pilot/fpet-r4/seed2', load_config=True, log_path='.', r_layer=4, epochs=100, eval_every=10, consistency=False, cons_weight=1.0, cons_temp=1.0, full_ce_weight=1.0, feat_weight=0.0, full_every=1, no_full_eval=False, no_latency=False)
+567.7s 519 Traceback (most recent call last):
+567.7s 520 File "/kaggle/working/kims_fpet/main.py", line 177, in <module>
+567.7s 521 vit = create_model(args.model, checkpoint_path='ViT-B_16.npz', drop_path_rate=0.1)
+567.7s 522 File "/usr/local/lib/python3.13/dist-packages/timm/models/factory.py", line 84, in create_model
+567.7s 523 load_checkpoint(model, checkpoint_path)
+567.7s 524 ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+567.7s 525 File "/usr/local/lib/python3.13/dist-packages/timm/models/helpers.py", line 51, in load_checkpoint
+567.7s 526 model.load_pretrained(checkpoint_path)
+567.7s 527 ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+567.7s 528 File "/usr/local/lib/python3.13/dist-packages/timm/models/vision_transformer.py", line 313, in load_pretrained
+567.7s 529 _load_weights(self, checkpoint_path, prefix)
+567.7s 530 ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+567.7s 531 File "/usr/local/lib/python3.13/dist-packages/torch/utils/_contextlib.py", line 124, in decorate_context
+567.7s 532 return func(*args, **kwargs)
+567.7s 533 File "/usr/local/lib/python3.13/dist-packages/timm/models/vision_transformer.py", line 413, in _load_weights
+567.7s 534 w = np.load(checkpoint_path)
+567.7s 535 File "/usr/local/lib/python3.13/dist-packages/numpy/lib/_npyio_impl.py", line 459, in load
+567.7s 536 fid = stack.enter_context(open(os.fspath(file), "rb"))
+567.7s 537 ~~~~^^^^^^^^^^^^^^^^^^^^^^^
+567.7s 538 IsADirectoryError: [Errno 21] Is a directory: 'ViT-B_16.npz'
+578.9s 539 Namespace(seed=2, bit=32, dim=8, scale=1, lr=0.001, wd=0.0001, model='vit_base_patch16_224_in21k', dataset='dtd', method='adaptformer', eval=False, config_path='.', model_path='./result/pilot/mcpet-r4/seed2', load_config=True, log_path='.', r_layer=4, epochs=100, eval_every=10, consistency=True, cons_weight=1.0, cons_temp=1.0, full_ce_weight=1.0, feat_weight=0.0, full_every=1, no_full_eval=False, no_latency=False)
+578.9s 540 Traceback (most recent call last):
+578.9s 541 File "/kaggle/working/kims_fpet/main.py", line 177, in <module>
+578.9s 542 vit = create_model(args.model, checkpoint_path='ViT-B_16.npz', drop_path_rate=0.1)
+578.9s 543 File "/usr/local/lib/python3.13/dist-packages/timm/models/factory.py", line 84, in create_model
+578.9s 544 load_checkpoint(model, checkpoint_path)
+578.9s 545 ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+578.9s 546 File "/usr/local/lib/python3.13/dist-packages/timm/models/helpers.py", line 51, in load_checkpoint
+578.9s 547 model.load_pretrained(checkpoint_path)
+578.9s 548 ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+578.9s 549 File "/usr/local/lib/python3.13/dist-packages/timm/models/vision_transformer.py", line 313, in load_pretrained
+578.9s 550 _load_weights(self, checkpoint_path, prefix)
+578.9s 551 ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+578.9s 552 File "/usr/local/lib/python3.13/dist-packages/torch/utils/_contextlib.py", line 124, in decorate_context
+578.9s 553 return func(*args, **kwargs)
+578.9s 554 File "/usr/local/lib/python3.13/dist-packages/timm/models/vision_transformer.py", line 413, in _load_weights
+578.9s 555 w = np.load(checkpoint_path)
+578.9s 556 File "/usr/local/lib/python3.13/dist-packages/numpy/lib/_npyio_impl.py", line 459, in load
+578.9s 557 fid = stack.enter_context(open(os.fspath(file), "rb"))
+578.9s 558 ~~~~^^^^^^^^^^^^^^^^^^^^^^^
+578.9s 559 IsADirectoryError: [Errno 21] Is a directory: 'ViT-B_16.npz'
+580.8s 560 # Results under `./result/pilot`
+580.8s 561 
+580.8s 562 3 runs found. Accuracy = best top-1 test accuracy (%), mean±std over seeds when >1 seed.
+580.8s 563 
+580.8s 564 ## Accuracy
+580.8s 565 
+580.8s 566 | run | smallnorb_azi | Mean |
+580.8s 567 |---|---|---|
+580.8s 568 | adaptformer | 33.8 | 33.77 |
+580.8s 569 | fpet-r2 | 32.0 | 32.00 |
+580.8s 570 | mcpet-r2 | 34.7 | 34.74 |
+580.8s 571 
+580.8s 572 ## Efficiency and full-token branch
+580.8s 573 
+580.8s 574 GFLOPs and latency are inference costs of the deployed (merged) model; latency is ms/image at batch 256 and only comparable across runs on the same GPU. Peak memory and train time are for training. "Full-branch acc" is the same weights evaluated without merging.
+580.8s 575 
+580.8s 576 | run | GFLOPs | latency (ms/img) | peak train mem (GB) | train time (min) | trainable params (M) | mean acc | mean full-branch acc |
+580.8s 577 |---|---|---|---|---|---|---|---|
+580.8s 578 | adaptformer | 17.59 | 12.861 | 5.55 | 68.3 | 0.161 | 33.77 | - |
+580.8s 579 | fpet-r2 | 10.47 | 7.424 | 3.14 | 76.9 | 0.165 | 32.00 | 30.01 |
+580.8s 580 | mcpet-r2 | 10.47 | 7.461 | 7.44 | 110.3 | 0.165 | 34.74 | 34.81 |
+580.8s 581 
+580.8s 582 ## mcpet-r2 vs fpet-r2
+580.8s 583 
+580.8s 584 | dataset | fpet-r2 | mcpet-r2 | Δ |
+580.8s 585 |---|---|---|---|
+580.8s 586 | smallnorb_azi | 32.00 | 34.74 | +2.74 |
+580.8s 587 
+580.8s 588 Mean Δ = +2.74 over 1 datasets; mcpet-r2 wins 1, ties 0, loses 0.
+580.8s 589 
+580.8s 590 ## mcpet-r4 vs fpet-r4
+580.8s 591 
+580.8s 592 No datasets in common.
+580.8s 593 
+580.8s 594 ## mcpet-r4 vs adaptformer
+580.8s 595 
+580.8s 596 No datasets in common.
+581.0s 597 result/pilot/adaptformer/seed0/smallnorb_azi/summary.json
+581.0s 598 result/pilot/fpet-r2/seed0/smallnorb_azi/summary.json
+581.0s 599 result/pilot/mcpet-r2/seed0/smallnorb_azi/summary.json
+583.5s 600 /usr/local/lib/python3.13/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\|'
+583.5s 601 cells[i][c] = re.sub('\\\\\|', '|', cell)
+583.7s 602 /usr/local/lib/python3.13/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\_'
+583.7s 603 text = re.sub(r'_', '\_', text) # Escape underscores in display text
+584.4s 604 [NbConvertApp] Converting notebook __notebook__.ipynb to notebook
+584.5s 605 [NbConvertApp] Writing 56992 bytes to __notebook__.ipynb
+586.9s 606 [NbConvertApp] Converting notebook __notebook__.ipynb to html
+587.4s 607 [NbConvertApp] Writing 330188 bytes to __results__.html

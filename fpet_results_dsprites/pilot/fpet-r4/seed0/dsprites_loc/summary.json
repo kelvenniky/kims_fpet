@@ -1,0 +1,17 @@
+{
+  "dataset": "dsprites_loc",
+  "run": "fpet-r4",
+  "method": "adaptformer",
+  "r_layer": 4,
+  "consistency": false,
+  "seed": 0,
+  "best_acc": 85.34206748008728,
+  "best_epoch": 99,
+  "best_acc_full_branch": null,
+  "gflops": 11.953547264,
+  "latency_ms_per_img": 8.844983391463757,
+  "params_total": 85962512,
+  "params_trainable": 163856,
+  "peak_train_mem_gb": 3.6325278282165527,
+  "total_train_time_s": 4328.961446762085
+}

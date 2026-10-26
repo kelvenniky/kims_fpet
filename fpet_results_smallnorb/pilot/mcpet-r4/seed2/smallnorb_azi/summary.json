@@ -1,0 +1,17 @@
+{
+  "dataset": "smallnorb_azi",
+  "run": "mcpet-r4",
+  "method": "adaptformer",
+  "r_layer": 4,
+  "consistency": true,
+  "seed": 2,
+  "best_acc": 33.74485671520233,
+  "best_epoch": 99,
+  "best_acc_full_branch": 33.44033062458038,
+  "gflops": 11.9535488,
+  "latency_ms_per_img": 9.055092216779787,
+  "params_total": 85964050,
+  "params_trainable": 165394,
+  "peak_train_mem_gb": 7.056453704833984,
+  "total_train_time_s": 6731.6321856975555
+}

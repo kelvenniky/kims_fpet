@@ -1,0 +1,17 @@
+{
+  "dataset": "dtd",
+  "run": "adaptformer",
+  "method": "adaptformer",
+  "r_layer": null,
+  "consistency": false,
+  "seed": 2,
+  "best_acc": 70.37233710289001,
+  "best_epoch": 19,
+  "best_acc_full_branch": null,
+  "gflops": 17.592145152,
+  "latency_ms_per_img": 12.29140597085158,
+  "params_total": 85982255,
+  "params_trainable": 183599,
+  "peak_train_mem_gb": 5.546567440032959,
+  "total_train_time_s": 2826.5442459583282
+}
