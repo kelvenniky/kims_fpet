@@ -17,6 +17,7 @@ from torch.utils.tensorboard import SummaryWriter
 import time
 import datetime
 import json
+import random
 
 
 def consistency_loss(args, model, x, y):
@@ -24,7 +25,8 @@ def consistency_loss(args, model, x, y):
     Merge-consistency objective: CE on the merged branch, CE on the full-token branch and
     a KL term distilling the (detached) full-token prediction into the merged branch.
     """
-    out, out_full, feat, feat_full = model.forward_two_branch(x)
+    out, out_full, feat, feat_full = model.forward_two_branch(
+        x, tie_rng=args.tie_masks, full_grad=not args.full_no_grad)
     ce = F.cross_entropy(out, y)
     ce_full = F.cross_entropy(out_full, y)
     T = args.cons_temp
@@ -39,13 +41,53 @@ def consistency_loss(args, model, x, y):
     return loss, parts
 
 
+def distillation_loss(args, model, teacher, x, y):
+    """
+    Distillation baseline: CE on the merged model plus the same KL term as consistency_loss,
+    but the target comes from a separately trained, frozen unmerged PET model (no shared weights).
+    """
+    out = model(x)
+    with torch.no_grad():
+        out_t = teacher(x)
+    ce = F.cross_entropy(out, y)
+    T = args.cons_temp
+    kl = F.kl_div(F.log_softmax(out / T, dim=-1), F.softmax(out_t / T, dim=-1),
+                  reduction='batchmean') * T * T
+    loss = ce + args.cons_weight * kl
+    return loss, {'ce': ce.item(), 'kl': kl.item()}
+
+
+def build_teacher(args):
+    """Frozen unmerged PET model (same method/dim/scale) loaded from --teacher_ckpt."""
+    # keep the CPU RNG stream identical to a plain FPET run with the same seed
+    rng = torch.get_rng_state()
+    teacher = create_model(args.model, checkpoint_path='ViT-B_16.npz', drop_path_rate=0.1)
+    if args.method == 'adaptformer':
+        adaptformer.set_adapter(teacher, dim=args.dim, s=args.scale, bit=args.bit)
+    else:
+        lora.set_adapter(teacher, dim=args.dim, s=args.scale, bit=args.bit)
+    teacher.reset_classifier(get_classes_num(args.dataset))
+    torch.set_rng_state(rng)
+
+    state = torch.load(args.teacher_ckpt, map_location='cpu')
+    own = teacher.state_dict()
+    unknown = [k for k in state if k not in own]
+    missing = [k for k, p in teacher.named_parameters() if ('adapter' in k or 'head' in k) and k not in state]
+    assert not unknown and not missing, f'teacher checkpoint mismatch: unknown={unknown[:3]} missing={missing[:3]}'
+    teacher.load_state_dict(state, strict=False)
+    teacher.eval()
+    for p in teacher.parameters():
+        p.requires_grad = False
+    return teacher.cuda()
+
+
 def run_name(model_path):
     # model_path is <root>/<run> or <root>/<run>/seed<k>
     parts = os.path.normpath(model_path).split(os.sep)
     return parts[-2] if parts[-1].startswith('seed') and len(parts) > 1 else parts[-1]
 
 
-def train(args, model, dl, opt, scheduler, epoch, log_writer):
+def train(args, model, dl, opt, scheduler, epoch, log_writer, teacher=None):
     model.train()
     model = model.cuda()
     torch.cuda.reset_peak_memory_stats()
@@ -60,6 +102,14 @@ def train(args, model, dl, opt, scheduler, epoch, log_writer):
             x, y = batch[0].cuda(), batch[1].cuda()
             if args.consistency and step % args.full_every == 0:
                 loss, parts = consistency_loss(args, model, x, y)
+            elif teacher is not None:
+                loss, parts = distillation_loss(args, model, teacher, x, y)
+            elif args.merge_prob < 1:
+                # stochastic merging: one forward per step, merged with probability merge_prob
+                merged = merge_rng.random() < args.merge_prob
+                out = model(x) if merged else model.forward_full(x)
+                loss = F.cross_entropy(out, y)
+                parts = {'ce': loss.item(), 'merged': float(merged)}
             else:
                 out = model(x)
                 loss = F.cross_entropy(out, y)
@@ -78,6 +128,7 @@ def train(args, model, dl, opt, scheduler, epoch, log_writer):
             acc = test(model, test_dl)
             end_test = time.time()
             acc_full = test_full(model, test_dl) if args.full_eval else None
+            val_acc = test(model, val_dl) if val_dl is not None else None
             train_time = (end_train-start_train)/(len(dl)*args.eval_every)
             test_time = (end_test-start_test)/len(test_dl)
             log(args, acc, train_time, test_time, loss.item(), ep)
@@ -90,7 +141,7 @@ def train(args, model, dl, opt, scheduler, epoch, log_writer):
             if acc_full is not None:
                 log_writer.add_scalar('acc_full', acc_full, ep)
             log_writer.flush()
-            args.history.append({'epoch': ep, 'acc': acc, 'acc_full': acc_full,
+            args.history.append({'epoch': ep, 'acc': acc, 'acc_full': acc_full, 'val_acc': val_acc,
                                  'train_time_per_it': train_time, 'test_time_per_it': test_time,
                                  **{f'loss_{k}': sum(v) / len(v) for k, v in meters.items()}})
             if acc > args.best_acc:
@@ -127,7 +178,7 @@ def test_full(model, dl):
     model = model.cuda()
     for batch in tqdm(dl):
         x, y = batch[0].cuda(), batch[1].cuda()
-        out = model.forward_two_branch(x)[1].data
+        out = model.forward_full(x).data
         acc.update(out, y)
     return acc.result().item()
 
@@ -162,10 +213,31 @@ if __name__ == '__main__':
     parser.add_argument('--no_full_eval', action='store_true', default=False,
                         help='skip evaluating the full-token branch at test time')
     parser.add_argument('--no_latency', action='store_true', default=False)
+    # revision experiments (reviewer M1-M3, M7)
+    parser.add_argument('--tie_masks', action='store_true', default=False,
+                        help='full-token path replays the merged path RNG: tied drop-path masks, '
+                             'RNG stream identical to FPET')
+    parser.add_argument('--full_no_grad', action='store_true', default=False,
+                        help='run the full-token path without gradients (no-grad teacher; needs --full_ce_weight 0)')
+    parser.add_argument('--merge_prob', type=float, default=1.0,
+                        help='<1: stochastic merging, one forward per step, merged with this probability')
+    parser.add_argument('--drop_path', type=float, default=0.1, help='stochastic depth rate of the backbone')
+    parser.add_argument('--adapter_dropout', type=float, default=0.1, help='dropout inside every adapter')
+    parser.add_argument('--val_select', action='store_true', default=False,
+                        help='train on train800 only, evaluate val200 too, report test acc at the best val epoch')
+    # distillation baseline: KL to a frozen unmerged PET model (uses --cons_weight / --cons_temp)
+    parser.add_argument('--teacher_ckpt', type=str, default=None,
+                        help='<dataset>.pth of a trained unmerged run (e.g. adaptformer/seed0/cifar.pth)')
     args = parser.parse_args()
     print(args)
     if args.consistency and args.r_layer is None:
         parser.error('--consistency requires --r_layer')
+    if args.teacher_ckpt and (args.consistency or args.r_layer is None or args.eval):
+        parser.error('--teacher_ckpt requires --r_layer and cannot be combined with --consistency or --eval')
+    if args.full_no_grad and args.full_ce_weight > 0:
+        parser.error('--full_no_grad needs --full_ce_weight 0 (the full path gets no gradient)')
+    if args.merge_prob < 1 and (args.r_layer is None or args.consistency or args.teacher_ckpt):
+        parser.error('--merge_prob < 1 needs --r_layer and no --consistency / --teacher_ckpt')
     args.full_eval = args.r_layer is not None and not args.no_full_eval
     if args.eval or args.load_config:
         load_config(args)
@@ -174,8 +246,15 @@ if __name__ == '__main__':
     args.best_ep = 0
     args.best_acc_full = None
     args.history = []
-    vit = create_model(args.model, checkpoint_path='ViT-B_16.npz', drop_path_rate=0.1)
-    train_dl, test_dl = get_data(args.dataset, normalize=False)
+    vit = create_model(args.model, checkpoint_path='ViT-B_16.npz', drop_path_rate=args.drop_path)
+    if args.val_select:
+        train_dl, val_dl = get_data(args.dataset, normalize=False, evaluate=False)
+        test_dl = get_data(args.dataset, normalize=False)[1]
+    else:
+        train_dl, test_dl = get_data(args.dataset, normalize=False)
+        val_dl = None
+    # separate stream so stochastic merging does not change data order or dropout masks
+    merge_rng = random.Random(1000 + args.seed)
 
     save_folder = os.path.join(args.model_path, args.dataset)
     if not os.path.exists(save_folder):
@@ -192,6 +271,9 @@ if __name__ == '__main__':
     if args.r_layer is not None:
         fpet.apply_fpet.apply_patch(vit, method = args.method, r_layer = args.r_layer)
         print(f'FPET applied!')
+    for m in vit.modules():
+        if isinstance(m, (adaptformer.Adapter, lora.Adapter)) and hasattr(m, 'dropout'):
+            m.dropout.p = args.adapter_dropout
 
     if not args.eval:
         import shutil
@@ -227,7 +309,9 @@ if __name__ == '__main__':
         opt = AdamW(trainable, lr=args.lr, weight_decay=args.wd)
         scheduler = CosineLRScheduler(opt, t_initial=args.epochs,
                                       warmup_t=10, lr_min=1e-5, warmup_lr_init=1e-6, decay_rate=0.1)
-        vit = train(args, vit, train_dl, opt, scheduler, epoch=args.epochs, log_writer=log_writer)
+        teacher = build_teacher(args) if args.teacher_ckpt else None
+        vit = train(args, vit, train_dl, opt, scheduler, epoch=args.epochs, log_writer=log_writer, teacher=teacher)
+        del teacher
 
         end_total = time.time()
         total_time = end_total - start_total
@@ -248,6 +332,11 @@ if __name__ == '__main__':
         'method': args.method,
         'r_layer': args.r_layer,
         'consistency': args.consistency,
+        'teacher_ckpt': args.teacher_ckpt,
+        'variant': {k: getattr(args, k) for k in
+                    ['cons_weight', 'cons_temp', 'full_ce_weight', 'feat_weight', 'full_every', 'tie_masks',
+                     'full_no_grad', 'merge_prob', 'drop_path', 'adapter_dropout', 'val_select', 'epochs',
+                     'eval_every']},
         'seed': args.seed,
         'best_acc': args.best_acc * 100,
         'best_epoch': args.best_ep,
@@ -260,6 +349,16 @@ if __name__ == '__main__':
         summary['peak_train_mem_gb'] = args.peak_train_mem_gb
         summary['total_train_time_s'] = total_time
         summary['history'] = args.history
+        # reviewer M3: last evaluation (no checkpoint selection) and validation-based selection
+        last = args.history[-1]
+        summary['final_acc'] = last['acc'] * 100
+        summary['final_acc_full_branch'] = last['acc_full'] * 100 if last['acc_full'] is not None else None
+        summary['n_evals'] = len(args.history)
+        if args.val_select:
+            sel = max(args.history, key=lambda h: (h['val_acc'], h['epoch']))
+            summary['val_selected_epoch'] = sel['epoch']
+            summary['val_selected_val_acc'] = sel['val_acc'] * 100
+            summary['val_selected_test_acc'] = sel['acc'] * 100
     evidence.write_json(os.path.join(save_folder, 'summary.json' if not args.eval else 'eval_summary.json'), summary)
     print(json.dumps({k: v for k, v in summary.items() if k != 'history'}, indent=2))
 

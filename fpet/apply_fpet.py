@@ -9,6 +9,7 @@
 # --------------------------------------------------------
 
 
+import contextlib
 from typing import Tuple
 
 import torch
@@ -23,7 +24,7 @@ def forward_block(self, x):
     x_attn, metric = self.attn(self.norm1(x), attn_size)
     x = x + self.drop_path(x_attn)
 
-    if hasattr(self, 'refinement'):
+    if hasattr(self, 'refinement') and not self._fpet_info.get("skip_merge"):
         metric = metric.detach()
         metric = metric + 1 * self.refinement(metric)
         # Apply FPET here
@@ -56,28 +57,70 @@ def mlp_residual(block, x):
     return out
 
 
-def forward_merge_branch(block, x):
+def _rng_state(device):
+    state = {"cpu": torch.get_rng_state()}
+    if device.type == "cuda":
+        state["cuda"] = torch.cuda.get_rng_state(device)
+    return state
+
+
+@contextlib.contextmanager
+def _replay_rng(state, device):
+    """
+    Run the body from a saved RNG state, then put the outer RNG stream back where it was.
+    Used to tie the full-token path's stochastic-depth masks to those of the merged path
+    (drop path draws one value per sample, so the masks are identical for both paths), and
+    to leave the RNG stream consumed by training exactly as in a plain FPET run.
+    """
+    devices = [device] if device.type == "cuda" else []
+    with torch.random.fork_rng(devices=devices):
+        torch.set_rng_state(state["cpu"])
+        if "cuda" in state:
+            torch.cuda.set_rng_state(state["cuda"], device)
+        yield
+
+
+def _full_ctx(full_grad):
+    return contextlib.nullcontext() if full_grad else torch.no_grad()
+
+
+def forward_merge_branch(block, x, tie_rng=False, full_grad=True):
     """
     Forward of the merging block for consistency training.
     The attention is computed once on all tokens and shared; the block then returns
     both the merged output (as in FPET) and the full-token output (no merging).
+
+    tie_rng:   the full-token path replays the merged path's RNG state (tied drop-path masks,
+               RNG stream identical to FPET). Off by default, which reproduces the reported runs.
+    full_grad: False runs the full-token path without gradients (no-grad teacher).
     """
     info = block._fpet_info
     attn_size = info["size"] if info["prop_attn"] else None
     x_attn, metric = block.attn(block.norm1(x), attn_size)
     x = x + _drop_path1(block, x_attn)
 
-    x_full = mlp_residual(block, x)
+    def merged():
+        m = metric.detach()
+        m = m + 1 * block.refinement(m)
+        merge = bipartite_diff_matching(
+            m,
+            info["class_token"],
+            info["distill_token"],
+        )
+        x_merged, info["size"] = merge_wavg(merge, x, info["size"])
+        return mlp_residual(block, x_merged)
 
-    metric = metric.detach()
-    metric = metric + 1 * block.refinement(metric)
-    merge = bipartite_diff_matching(
-        metric,
-        info["class_token"],
-        info["distill_token"],
-    )
-    x_merged, info["size"] = merge_wavg(merge, x, info["size"])
-    return mlp_residual(block, x_merged), x_full
+    if not tie_rng:
+        # original order (full path first); kept so that existing runs are reproducible
+        with _full_ctx(full_grad):
+            x_full = mlp_residual(block, x)
+        return merged(), x_full
+
+    state = _rng_state(x.device)
+    x_merged = merged()
+    with _replay_rng(state, x.device), _full_ctx(full_grad):
+        x_full = mlp_residual(block, x)
+    return x_merged, x_full
 
 
 def forward_attn(self, x, size):
@@ -120,7 +163,7 @@ class FPETBlock(Block):
         x_attn, metric = self.attn(self.norm1(x), attn_size)
         x = x + self._drop_path1(x_attn)
 
-        if hasattr(self, 'refinement'):
+        if hasattr(self, 'refinement') and not self._fpet_info.get("skip_merge"):
             metric = metric.detach()
             metric = metric + 1 * self.refinement(metric)
             # Apply FPET here
@@ -192,7 +235,15 @@ def make_fpet_class(transformer_class):
 
             return super().forward(*args, **kwdargs)
 
-        def forward_two_branch(self, x: torch.Tensor):
+        def forward_full(self, x: torch.Tensor) -> torch.Tensor:
+            """Full-token forward of the same weights: the merging step is skipped."""
+            self._fpet_info["skip_merge"] = True
+            try:
+                return self.forward(x)
+            finally:
+                self._fpet_info["skip_merge"] = False
+
+        def forward_two_branch(self, x: torch.Tensor, tie_rng: bool = False, full_grad: bool = True):
             """
             Shared-prefix two-branch forward used for merge-consistency training.
             Layers before the merging block (and its attention) run once; afterwards the
@@ -200,6 +251,7 @@ def make_fpet_class(transformer_class):
 
             Returns (logits_merged, logits_full, feat_merged, feat_full).
             The merged branch is numerically identical to the regular forward.
+            tie_rng / full_grad: see forward_merge_branch.
             """
             assert self.dist_token is None, "two-branch forward assumes no distillation token"
             self._fpet_info["size"] = None
@@ -214,21 +266,26 @@ def make_fpet_class(transformer_class):
             for blk in self.blocks:
                 if x_full is None:
                     if hasattr(blk, "refinement"):
-                        x, x_full = forward_merge_branch(blk, x)
+                        x, x_full = forward_merge_branch(blk, x, tie_rng, full_grad)
                     else:
                         x = blk(x)
                 else:
+                    state = _rng_state(x.device) if tie_rng else None
                     x = blk(x)
                     # the full branch has unit token sizes, so no proportional attention
                     size = self._fpet_info["size"]
                     self._fpet_info["size"] = None
-                    x_full = blk(x_full)
+                    rng = _replay_rng(state, x.device) if tie_rng else contextlib.nullcontext()
+                    with rng, _full_ctx(full_grad):
+                        x_full = blk(x_full)
                     self._fpet_info["size"] = size
             assert x_full is not None, "no merging block found; set r_layer"
 
             feat = self.pre_logits(self.norm(x)[:, 0])
-            feat_full = self.pre_logits(self.norm(x_full)[:, 0])
-            return self.head(feat), self.head(feat_full), feat, feat_full
+            with _full_ctx(full_grad):
+                feat_full = self.pre_logits(self.norm(x_full)[:, 0])
+                out_full = self.head(feat_full)
+            return self.head(feat), out_full, feat, feat_full
 
     return FPETVisionTransformer
 

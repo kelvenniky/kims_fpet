@@ -4,3 +4,4 @@ result/
 data/
 *.npz
 *.pdf
+teachers/
