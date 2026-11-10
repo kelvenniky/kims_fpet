@@ -22,7 +22,7 @@ import threading
 import subprocess
 from argparse import ArgumentParser
 
-N_FRIENDS = 5
+N_FRIENDS = 4
 SEEDS = [0, 1, 2]
 PILOT = ['cifar', 'dtd', 'dsprites_loc', 'smallnorb_azi']
 STRUCT6 = ['clevr_count', 'clevr_dist', 'dmlab', 'kitti', 'dsprites_ori', 'smallnorb_ele']
@@ -131,8 +131,13 @@ PHASES = {
 }
 # one-week revision: only the runs the central criticism rests on (loss ablation, tied drop-path
 # masks, validation-based checkpoint selection); everything else is reported as a limitation
-PHASES['rev-week'] = ([(r, d, s) for r in ['mcpet-r2-nokl', 'mcpet-r2-nofullce', 'mcpet-r2-tied']
-                       for d in PILOT for s in SEEDS] + PHASES['rev-val'])
+# split between two people so that each pair of accounts finishes whole experiments:
+# rev-week-a (friends 0, 1): no-KL and tied-mask ablations; rev-week-b (friends 2, 3): no-full-CE and val selection
+PHASES['rev-week-a'] = [(r, d, s) for r in ['mcpet-r2-nokl', 'mcpet-r2-tied'] for d in PILOT for s in SEEDS]
+PHASES['rev-week-b'] = [('mcpet-r2-nofullce', d, s) for d in PILOT for s in SEEDS] + PHASES['rev-val']
+PHASES['rev-week'] = PHASES['rev-week-a'] + PHASES['rev-week-b']
+# phase -> the friends it is balanced over (default: all of them)
+PHASE_FRIENDS = {'rev-week-a': [0, 1], 'rev-week-b': [2, 3]}
 
 # job id ('run/seed<s>/dataset') -> friend; applied after the automatic split
 OVERRIDES = {}
@@ -168,10 +173,11 @@ def assign(phases):
     jobs = []
     for phase in phases:
         load = [0.0] * N_FRIENDS
+        friends = PHASE_FRIENDS.get(phase, range(N_FRIENDS))
         todo = sorted(PHASES[phase], key=lambda j: (-estimate_s(j[0], j[1]), job_id(*j)))
         for run, dataset, seed in todo:
             est = estimate_s(run, dataset)
-            friend = min(range(N_FRIENDS), key=lambda f: (load[f], f))
+            friend = min(friends, key=lambda f: (load[f], f))
             friend = OVERRIDES.get(job_id(run, dataset, seed), friend)
             load[friend] += est
             jobs.append((friend, phase, run, dataset, seed, est))
