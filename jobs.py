@@ -143,8 +143,11 @@ PHASES['rev-day'] = ([(r, d, s) for r in ['fpet-r2-stoch', 'fpet-r2-e160'] for d
 # second session for friends 2, 3 (M5 / R14): FPET vs MC-FPET at layer 2 on the six remaining
 # Structured tasks, seeds 0 and 1
 PHASES['rev-struct-lite'] = [(r, d, s) for r in ['fpet-r2', 'mcpet-r2'] for d in STRUCT6 for s in [0, 1]]
+# rev-day jobs that did not fit in the 11.5 h sessions (all DTD), rerun in one short session on friend 0
+PHASES['rev-day-fix'] = [('fpet-r2-e160', 'dtd', 1), ('fpet-r2-e160', 'dtd', 2), ('fpet-r2-stoch', 'dtd', 2)]
 # phase -> the friends it is balanced over (default: all of them)
-PHASE_FRIENDS = {'rev-week-a': [0, 1], 'rev-week-b': [2, 3], 'rev-day': [0, 1], 'rev-struct-lite': [2, 3]}
+PHASE_FRIENDS = {'rev-week-a': [0, 1], 'rev-week-b': [2, 3], 'rev-day': [0, 1], 'rev-struct-lite': [2, 3],
+                 'rev-day-fix': [0]}
 
 # job id ('run/seed<s>/dataset') -> friend; applied after the automatic split
 OVERRIDES = {}
