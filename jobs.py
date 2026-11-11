@@ -136,8 +136,15 @@ PHASES = {
 PHASES['rev-week-a'] = [(r, d, s) for r in ['mcpet-r2-nokl', 'mcpet-r2-tied'] for d in PILOT for s in SEEDS]
 PHASES['rev-week-b'] = [('mcpet-r2-nofullce', d, s) for d in PILOT for s in SEEDS] + PHASES['rev-val']
 PHASES['rev-week'] = PHASES['rev-week-a'] + PHASES['rev-week-b']
+# extra day (friends 0, 1): the rest of M1 (stochastic merging, compute-matched FPET) and M2 (no
+# drop path / adapter dropout on sNORB-Azim)
+PHASES['rev-day'] = ([(r, d, s) for r in ['fpet-r2-stoch', 'fpet-r2-e160'] for d in PILOT for s in SEEDS] +
+                     [(r, 'smallnorb_azi', s) for r in ['fpet-r2-nodrop', 'mcpet-r2-nodrop'] for s in SEEDS])
+# second session for friends 2, 3 (M5 / R14): FPET vs MC-FPET at layer 2 on the six remaining
+# Structured tasks, seeds 0 and 1
+PHASES['rev-struct-lite'] = [(r, d, s) for r in ['fpet-r2', 'mcpet-r2'] for d in STRUCT6 for s in [0, 1]]
 # phase -> the friends it is balanced over (default: all of them)
-PHASE_FRIENDS = {'rev-week-a': [0, 1], 'rev-week-b': [2, 3]}
+PHASE_FRIENDS = {'rev-week-a': [0, 1], 'rev-week-b': [2, 3], 'rev-day': [0, 1], 'rev-struct-lite': [2, 3]}
 
 # job id ('run/seed<s>/dataset') -> friend; applied after the automatic split
 OVERRIDES = {}
