@@ -22,7 +22,7 @@ import threading
 import subprocess
 from argparse import ArgumentParser
 
-N_FRIENDS = 4
+N_FRIENDS = 12
 SEEDS = [0, 1, 2]
 PILOT = ['cifar', 'dtd', 'dsprites_loc', 'smallnorb_azi']
 STRUCT6 = ['clevr_count', 'clevr_dist', 'dmlab', 'kitti', 'dsprites_ori', 'smallnorb_ele']
@@ -146,8 +146,15 @@ PHASES['rev-struct-lite'] = [(r, d, s) for r in ['fpet-r2', 'mcpet-r2'] for d in
 # rev-day jobs that did not fit in the 11.5 h sessions (all DTD), rerun in one short session on friend 0
 PHASES['rev-day-fix'] = [('fpet-r2-e160', 'dtd', 1), ('fpet-r2-e160', 'dtd', 2), ('fpet-r2-stoch', 'dtd', 2)]
 # phase -> the friends it is balanced over (default: all of them)
+# everything still open, over 12 accounts (0-11). The 12 AdaptFormer runs are the
+# kd-r2 teachers and also give the AdaptFormer final-epoch histories that rev-history asks for; each kd-r2
+# job is placed on the account that trains its teacher and waits for it (see assign / run_jobs).
+_final = ([('adaptformer', d, s) for d in PILOT for s in SEEDS] + PHASES['rev-kd'] + PHASES['rev-cost'] +
+          PHASES['rev-sweep'] + PHASES['rev-r6'] + PHASES['rev-lora'] + PHASES['rev-history'])
+PHASES['rev-final'] = list(dict.fromkeys(_final))  # drop duplicates, keep order
+# phase -> the friends it is balanced over (default: all of them)
 PHASE_FRIENDS = {'rev-week-a': [0, 1], 'rev-week-b': [2, 3], 'rev-day': [0, 1], 'rev-struct-lite': [2, 3],
-                 'rev-day-fix': [0]}
+                 'rev-day-fix': [0], 'rev-final': list(range(N_FRIENDS))}
 
 # job id ('run/seed<s>/dataset') -> friend; applied after the automatic split
 OVERRIDES = {}
@@ -178,19 +185,38 @@ def estimate_s(run, dataset):
     return base * epochs / 100 + per_eval * N_TEST[dataset] / 1e4 * (epochs // every)
 
 
+def teacher_job(run, dataset, seed):
+    return ('adaptformer', dataset, seed) if run.startswith('kd-') else None
+
+
 def assign(phases):
-    """[(friend, phase, run, dataset, seed, est_s)] with each phase balanced over the friends."""
+    """[(friend, phase, run, dataset, seed, est_s)] with each phase balanced over the friends.
+    A kd-* job goes to the friend that trains its AdaptFormer teacher when the teacher is in the same phase,
+    and teachers are queued first so that their kd-* jobs are not left waiting at the end of a session."""
     jobs = []
     for phase in phases:
         load = [0.0] * N_FRIENDS
         friends = PHASE_FRIENDS.get(phase, range(N_FRIENDS))
-        todo = sorted(PHASES[phase], key=lambda j: (-estimate_s(j[0], j[1]), job_id(*j)))
+        own = set(PHASES[phase])
+        teachers = {teacher_job(*j) for j in own} - {None}
+        todo = sorted(PHASES[phase], key=lambda j: (j not in teachers, -estimate_s(j[0], j[1]), job_id(*j)))
+        where = {}
+        # first pass: everything except kd-* jobs whose teacher is trained in this phase
         for run, dataset, seed in todo:
+            if teacher_job(run, dataset, seed) in own:
+                continue
             est = estimate_s(run, dataset)
             friend = min(friends, key=lambda f: (load[f], f))
             friend = OVERRIDES.get(job_id(run, dataset, seed), friend)
             load[friend] += est
-            jobs.append((friend, phase, run, dataset, seed, est))
+            where[(run, dataset, seed)] = friend
+        # second pass: kd-* jobs follow their teacher
+        for run, dataset, seed in todo:
+            if teacher_job(run, dataset, seed) in own:
+                friend = where[teacher_job(run, dataset, seed)]
+                load[friend] += estimate_s(run, dataset)
+                where[(run, dataset, seed)] = friend
+        jobs += [(where[j], phase, *j, estimate_s(j[0], j[1])) for j in todo]
     return jobs
 
 
@@ -217,6 +243,7 @@ def run_jobs(args):
     queue = [j for j in assign(args.phases) if j[0] == args.friend]
     lock = threading.Lock()
     failed = []
+    teacher_running = [0]  # teachers of this account's kd-* jobs currently training
 
     def done(run, dataset, seed):
         return os.path.isfile(f'{args.out}/{run}/seed{seed}/{dataset}/summary.json')
@@ -225,10 +252,24 @@ def run_jobs(args):
         if args.zip:
             shutil.make_archive(args.zip[:-4] if args.zip.endswith('.zip') else args.zip, 'zip', '.', args.out)
 
+    mine = {tuple(j[2:5]) for j in queue}
+
+    def teacher_dir(run, dataset, seed):
+        """Where the kd-* teacher is: a teacher trained in this phase (--out) first, then --teachers."""
+        for t in (args.out, args.teachers):
+            if os.path.isfile(TEACHER.format(teachers=t, seed=seed, dataset=dataset)):
+                return t
+        return None
+
+    def waiting(run, dataset, seed):
+        """kd-* job whose teacher is one of this account's jobs and not finished yet."""
+        t = teacher_job(run, dataset, seed)
+        return t in mine and not done(*t)
+
     def worker(gpu):
         while True:
             with lock:
-                job = None
+                job, blocked = None, False
                 for j in queue:
                     _, _, run, dataset, seed, est = j
                     if done(run, dataset, seed):
@@ -236,21 +277,34 @@ def run_jobs(args):
                     # 1.3x margin: the estimates are rough and a paired job may run slower
                     if time.time() - start + 1.3 * est > budget:
                         continue
+                    if waiting(run, dataset, seed):
+                        blocked = True
+                        continue
                     job = j
                     break
-                if job is None:
+                if job is not None:
+                    queue.remove(job)
+                elif not blocked or teacher_running[0] == 0:
                     return
-                queue.remove(job)
+            if job is None:  # only kd-* jobs whose teacher is still training on the other GPU are left
+                time.sleep(60)
+                continue
             _, phase, run, dataset, seed, est = job
             if run.startswith('kd-'):
-                ckpt = TEACHER.format(teachers=args.teachers, seed=seed, dataset=dataset)
-                if not os.path.isfile(ckpt):
+                tdir = teacher_dir(run, dataset, seed)
+                ckpt = TEACHER.format(teachers=tdir or args.teachers, seed=seed, dataset=dataset)
+                if tdir is None:
                     print(f'[gpu{gpu}] SKIP {job_id(run, dataset, seed)}: teacher {ckpt} not found', flush=True)
                     failed.append(job_id(run, dataset, seed))
                     continue
             d = f'{args.out}/{run}/seed{seed}/{dataset}'
             os.makedirs(d, exist_ok=True)
-            cmd = command(run, dataset, seed, args.out, args.teachers)
+            cmd = command(run, dataset, seed, args.out, teacher_dir(run, dataset, seed) or args.teachers)
+            is_teacher = any(teacher_job(*q[2:5]) == (run, dataset, seed) for q in assign(args.phases)
+                             if q[0] == args.friend)
+            if is_teacher:
+                with lock:
+                    teacher_running[0] += 1
             print(f'[gpu{gpu}] start {job_id(run, dataset, seed)} (est {est / 3600:.1f} h): {" ".join(cmd)}', flush=True)
             t0 = time.time()
             with open(f'{d}/stdout.log', 'w') as log:
@@ -261,6 +315,8 @@ def run_jobs(args):
                 failed.append(job_id(run, dataset, seed))
             print(f'[gpu{gpu}] {status} {job_id(run, dataset, seed)} in {(time.time() - t0) / 3600:.2f} h', flush=True)
             with lock:
+                if is_teacher:
+                    teacher_running[0] -= 1
                 zip_results()
 
     threads = [threading.Thread(target=worker, args=(g,)) for g in args.gpus]
