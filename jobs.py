@@ -152,9 +152,13 @@ PHASES['rev-day-fix'] = [('fpet-r2-e160', 'dtd', 1), ('fpet-r2-e160', 'dtd', 2),
 _final = ([('adaptformer', d, s) for d in PILOT for s in SEEDS] + PHASES['rev-kd'] + PHASES['rev-cost'] +
           PHASES['rev-sweep'] + PHASES['rev-r6'] + PHASES['rev-lora'] + PHASES['rev-history'])
 PHASES['rev-final'] = list(dict.fromkeys(_final))  # drop duplicates, keep order
+# R14 completion: the third seed of FPET / MC-FPET on the six Structured tasks (seeds 0, 1 are in
+# rev-struct-lite) and the unmerged AdaptFormer reference on them, over 3 accounts
+PHASES['rev-struct-rest'] = ([('adaptformer', d, s) for d in STRUCT6 for s in SEEDS] +
+                             [(r, d, 2) for r in ['fpet-r2', 'mcpet-r2'] for d in STRUCT6])
 # phase -> the friends it is balanced over (default: all of them)
 PHASE_FRIENDS = {'rev-week-a': [0, 1], 'rev-week-b': [2, 3], 'rev-day': [0, 1], 'rev-struct-lite': [2, 3],
-                 'rev-day-fix': [0], 'rev-final': list(range(N_FRIENDS))}
+                 'rev-day-fix': [0], 'rev-final': list(range(N_FRIENDS)), 'rev-struct-rest': [0, 1, 2]}
 
 # job id ('run/seed<s>/dataset') -> friend; applied after the automatic split
 OVERRIDES = {}
