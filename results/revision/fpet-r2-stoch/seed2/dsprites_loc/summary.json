@@ -1,0 +1,78 @@
+{
+  "dataset": "dsprites_loc",
+  "run": "fpet-r2-stoch",
+  "method": "adaptformer",
+  "r_layer": 2,
+  "consistency": false,
+  "teacher_ckpt": null,
+  "variant": {
+    "cons_weight": 1.0,
+    "cons_temp": 1.0,
+    "full_ce_weight": 1.0,
+    "feat_weight": 0.0,
+    "full_every": 1,
+    "tie_masks": false,
+    "full_no_grad": false,
+    "merge_prob": 0.5,
+    "drop_path": 0.1,
+    "adapter_dropout": 0.1,
+    "val_select": false,
+    "epochs": 100,
+    "eval_every": 25
+  },
+  "seed": 2,
+  "best_acc": 82.39474892616272,
+  "best_epoch": 99,
+  "best_acc_full_branch": 84.60015058517456,
+  "gflops": 10.474760192,
+  "latency_ms_per_img": 7.4310377550621824,
+  "params_total": 85962512,
+  "params_trainable": 163856,
+  "peak_train_mem_gb": 5.546250820159912,
+  "total_train_time_s": 8009.414646625519,
+  "history": [
+    {
+      "epoch": 24,
+      "acc": 0.7130534052848816,
+      "acc_full": 0.7285969853401184,
+      "val_acc": null,
+      "train_time_per_it": 1.302361031214396,
+      "test_time_per_it": 1.9086283610926733,
+      "loss_ce": 0.6599817474683126,
+      "loss_merged": 0.4666666666666667
+    },
+    {
+      "epoch": 49,
+      "acc": 0.8037787675857544,
+      "acc_full": 0.825927734375,
+      "val_acc": null,
+      "train_time_per_it": 1.3155755322774252,
+      "test_time_per_it": 1.9058920939763386,
+      "loss_ce": 0.29185867110888164,
+      "loss_merged": 0.5333333333333333
+    },
+    {
+      "epoch": 74,
+      "acc": 0.8155788779258728,
+      "acc_full": 0.8355034589767456,
+      "val_acc": null,
+      "train_time_per_it": 1.3129945430755616,
+      "test_time_per_it": 1.9021623358130455,
+      "loss_ce": 0.16789744595686595,
+      "loss_merged": 0.5333333333333333
+    },
+    {
+      "epoch": 99,
+      "acc": 0.8239474892616272,
+      "acc_full": 0.8460015058517456,
+      "val_acc": null,
+      "train_time_per_it": 1.352318966547648,
+      "test_time_per_it": 1.8943047871192296,
+      "loss_ce": 0.11814984232187271,
+      "loss_merged": 0.3333333333333333
+    }
+  ],
+  "final_acc": 82.39474892616272,
+  "final_acc_full_branch": 84.60015058517456,
+  "n_evals": 4
+}

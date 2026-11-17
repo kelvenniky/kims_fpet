@@ -1,0 +1,92 @@
+{
+  "dataset": "dsprites_loc",
+  "run": "fpet-r2-e160",
+  "method": "adaptformer",
+  "r_layer": 2,
+  "consistency": false,
+  "teacher_ckpt": null,
+  "variant": {
+    "cons_weight": 1.0,
+    "cons_temp": 1.0,
+    "full_ce_weight": 1.0,
+    "feat_weight": 0.0,
+    "full_every": 1,
+    "tie_masks": false,
+    "full_no_grad": false,
+    "merge_prob": 1.0,
+    "drop_path": 0.1,
+    "adapter_dropout": 0.1,
+    "val_select": false,
+    "epochs": 160,
+    "eval_every": 25
+  },
+  "seed": 1,
+  "best_acc": 83.85552167892456,
+  "best_epoch": 124,
+  "best_acc_full_branch": 84.22987461090088,
+  "gflops": 10.474760192,
+  "latency_ms_per_img": 6.828041250507037,
+  "params_total": 85962512,
+  "params_trainable": 163856,
+  "peak_train_mem_gb": 3.142849922180176,
+  "total_train_time_s": 10502.39155626297,
+  "history": [
+    {
+      "epoch": 24,
+      "acc": 0.6565755009651184,
+      "acc_full": 0.6612548828125,
+      "val_acc": null,
+      "train_time_per_it": 0.8888848177591959,
+      "test_time_per_it": 1.766371460424529,
+      "loss_ce": 0.6079841375350952
+    },
+    {
+      "epoch": 49,
+      "acc": 0.7862955927848816,
+      "acc_full": 0.7804768681526184,
+      "val_acc": null,
+      "train_time_per_it": 0.8963935407002767,
+      "test_time_per_it": 1.7637007724907663,
+      "loss_ce": 0.2183955838282903
+    },
+    {
+      "epoch": 74,
+      "acc": 0.8225775957107544,
+      "acc_full": 0.8342827558517456,
+      "val_acc": null,
+      "train_time_per_it": 0.8961472886403402,
+      "test_time_per_it": 1.762842586470975,
+      "loss_ce": 0.11109094868103662
+    },
+    {
+      "epoch": 99,
+      "acc": 0.8275960087776184,
+      "acc_full": 0.8295220136642456,
+      "val_acc": null,
+      "train_time_per_it": 0.8964225368499756,
+      "test_time_per_it": 1.7619043555524614,
+      "loss_ce": 0.06676022410392761
+    },
+    {
+      "epoch": 124,
+      "acc": 0.8385552167892456,
+      "acc_full": 0.8422987461090088,
+      "val_acc": null,
+      "train_time_per_it": 0.8981171449025472,
+      "test_time_per_it": 1.7599953644805484,
+      "loss_ce": 0.04986982954045137
+    },
+    {
+      "epoch": 149,
+      "acc": 0.836900532245636,
+      "acc_full": 0.8521186113357544,
+      "val_acc": null,
+      "train_time_per_it": 0.8946041215260824,
+      "test_time_per_it": 1.7620342349012692,
+      "loss_ce": 0.04418239568670591
+    }
+  ],
+  "final_acc": 83.6900532245636,
+  "final_acc_full_branch": 85.21186113357544,
+  "n_evals": 6
+}

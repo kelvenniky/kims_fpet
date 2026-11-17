@@ -1,0 +1,78 @@
+{
+  "dataset": "dsprites_loc",
+  "run": "fpet-r2-stoch",
+  "method": "adaptformer",
+  "r_layer": 2,
+  "consistency": false,
+  "teacher_ckpt": null,
+  "variant": {
+    "cons_weight": 1.0,
+    "cons_temp": 1.0,
+    "full_ce_weight": 1.0,
+    "feat_weight": 0.0,
+    "full_every": 1,
+    "tie_masks": false,
+    "full_no_grad": false,
+    "merge_prob": 0.5,
+    "drop_path": 0.1,
+    "adapter_dropout": 0.1,
+    "val_select": false,
+    "epochs": 100,
+    "eval_every": 25
+  },
+  "seed": 1,
+  "best_acc": 84.33024287223816,
+  "best_epoch": 99,
+  "best_acc_full_branch": 86.4244282245636,
+  "gflops": 10.474760192,
+  "latency_ms_per_img": 7.751064530263345,
+  "params_total": 85962512,
+  "params_trainable": 163856,
+  "peak_train_mem_gb": 5.546250820159912,
+  "total_train_time_s": 8436.535463094711,
+  "history": [
+    {
+      "epoch": 24,
+      "acc": 0.7597792148590088,
+      "acc_full": 0.7791340947151184,
+      "val_acc": null,
+      "train_time_per_it": 1.3787746410369872,
+      "test_time_per_it": 2.004730982085069,
+      "loss_ce": 0.5088876565297444,
+      "loss_merged": 0.5333333333333333
+    },
+    {
+      "epoch": 49,
+      "acc": 0.7999809980392456,
+      "acc_full": 0.8129340410232544,
+      "val_acc": null,
+      "train_time_per_it": 1.42604385693868,
+      "test_time_per_it": 2.0054790361060038,
+      "loss_ce": 0.18294602384169897,
+      "loss_merged": 0.4
+    },
+    {
+      "epoch": 74,
+      "acc": 0.8386366367340088,
+      "acc_full": 0.8608534336090088,
+      "val_acc": null,
+      "train_time_per_it": 1.3584704723358154,
+      "test_time_per_it": 2.010317867000898,
+      "loss_ce": 0.08282929360866546,
+      "loss_merged": 0.4
+    },
+    {
+      "epoch": 99,
+      "acc": 0.8433024287223816,
+      "acc_full": 0.864244282245636,
+      "val_acc": null,
+      "train_time_per_it": 1.369096076965332,
+      "test_time_per_it": 2.0072693915830717,
+      "loss_ce": 0.07379198881487052,
+      "loss_merged": 0.4
+    }
+  ],
+  "final_acc": 84.33024287223816,
+  "final_acc_full_branch": 86.4244282245636,
+  "n_evals": 4
+}

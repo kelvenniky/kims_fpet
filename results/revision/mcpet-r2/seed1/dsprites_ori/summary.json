@@ -1,0 +1,82 @@
+{
+  "dataset": "dsprites_ori",
+  "run": "mcpet-r2",
+  "method": "adaptformer",
+  "r_layer": 2,
+  "consistency": true,
+  "teacher_ckpt": null,
+  "variant": {
+    "cons_weight": 1.0,
+    "cons_temp": 1.0,
+    "full_ce_weight": 1.0,
+    "feat_weight": 0.0,
+    "full_every": 1,
+    "tie_masks": false,
+    "full_no_grad": false,
+    "merge_prob": 1.0,
+    "drop_path": 0.1,
+    "adapter_dropout": 0.1,
+    "val_select": false,
+    "epochs": 100,
+    "eval_every": 25
+  },
+  "seed": 1,
+  "best_acc": 53.90896201133728,
+  "best_epoch": 99,
+  "best_acc_full_branch": null,
+  "gflops": 10.474760192,
+  "latency_ms_per_img": 8.570308486620585,
+  "params_total": 85962512,
+  "params_trainable": 163856,
+  "peak_train_mem_gb": 7.441566467285156,
+  "total_train_time_s": 6502.802268028259,
+  "history": [
+    {
+      "epoch": 24,
+      "acc": 0.4326036274433136,
+      "acc_full": null,
+      "val_acc": null,
+      "train_time_per_it": 2.6135592765808107,
+      "test_time_per_it": 2.192127595345179,
+      "loss_ce": 1.1311906576156616,
+      "loss_ce_full": 1.0815486868222555,
+      "loss_kl": 0.14570933679739634
+    },
+    {
+      "epoch": 49,
+      "acc": 0.5291069746017456,
+      "acc_full": null,
+      "val_acc": null,
+      "train_time_per_it": 2.6615803470611574,
+      "test_time_per_it": 2.1925974645548396,
+      "loss_ce": 0.5307311534881591,
+      "loss_ce_full": 0.502292275428772,
+      "loss_kl": 0.1597245176633199
+    },
+    {
+      "epoch": 74,
+      "acc": 0.536241352558136,
+      "acc_full": null,
+      "val_acc": null,
+      "train_time_per_it": 2.665741011937459,
+      "test_time_per_it": 2.184122980468803,
+      "loss_ce": 0.3421101043621699,
+      "loss_ce_full": 0.3080531398455302,
+      "loss_kl": 0.1464211493730545
+    },
+    {
+      "epoch": 99,
+      "acc": 0.5390896201133728,
+      "acc_full": null,
+      "val_acc": null,
+      "train_time_per_it": 2.668056730270386,
+      "test_time_per_it": 2.1881430024902024,
+      "loss_ce": 0.28908946017424264,
+      "loss_ce_full": 0.26176196734110513,
+      "loss_kl": 0.16294842610756557
+    }
+  ],
+  "final_acc": 53.90896201133728,
+  "final_acc_full_branch": null,
+  "n_evals": 4
+}

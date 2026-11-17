@@ -1,0 +1,77 @@
+{
+  "dataset": "dsprites_loc",
+  "run": "fpet-r2-val",
+  "method": "adaptformer",
+  "r_layer": 2,
+  "consistency": false,
+  "teacher_ckpt": null,
+  "variant": {
+    "cons_weight": 1.0,
+    "cons_temp": 1.0,
+    "full_ce_weight": 1.0,
+    "feat_weight": 0.0,
+    "full_every": 1,
+    "tie_masks": false,
+    "full_no_grad": false,
+    "merge_prob": 1.0,
+    "drop_path": 0.1,
+    "adapter_dropout": 0.1,
+    "val_select": true,
+    "epochs": 100,
+    "eval_every": 25
+  },
+  "seed": 0,
+  "best_acc": 80.41449785232544,
+  "best_epoch": 99,
+  "best_acc_full_branch": 81.14827275276184,
+  "gflops": 10.474760192,
+  "latency_ms_per_img": 6.866414627681175,
+  "params_total": 85962512,
+  "params_trainable": 163856,
+  "peak_train_mem_gb": 3.142849922180176,
+  "total_train_time_s": 6675.293843269348,
+  "history": [
+    {
+      "epoch": 24,
+      "acc": 0.7437337040901184,
+      "acc_full": 0.7291666865348816,
+      "val_acc": 0.7999999523162842,
+      "train_time_per_it": 0.893265073299408,
+      "test_time_per_it": 1.7682870651284854,
+      "loss_ce": 0.6741283436616262
+    },
+    {
+      "epoch": 49,
+      "acc": 0.7843153476715088,
+      "acc_full": 0.8025038242340088,
+      "val_acc": 0.7999999523162842,
+      "train_time_per_it": 0.9018969957033793,
+      "test_time_per_it": 1.7660654973652627,
+      "loss_ce": 0.2145977740486463
+    },
+    {
+      "epoch": 74,
+      "acc": 0.7968342900276184,
+      "acc_full": 0.8041042685508728,
+      "val_acc": 0.824999988079071,
+      "train_time_per_it": 0.9057707111040751,
+      "test_time_per_it": 1.7644710623555713,
+      "loss_ce": 0.1309936475008726
+    },
+    {
+      "epoch": 99,
+      "acc": 0.8041449785232544,
+      "acc_full": 0.8114827275276184,
+      "val_acc": 0.8449999690055847,
+      "train_time_per_it": 0.9070072873433431,
+      "test_time_per_it": 1.7657094034883711,
+      "loss_ce": 0.116120429088672
+    }
+  ],
+  "final_acc": 80.41449785232544,
+  "final_acc_full_branch": 81.14827275276184,
+  "n_evals": 4,
+  "val_selected_epoch": 99,
+  "val_selected_val_acc": 84.49999690055847,
+  "val_selected_test_acc": 80.41449785232544
+}

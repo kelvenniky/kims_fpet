@@ -1,0 +1,74 @@
+{
+  "dataset": "dsprites_loc",
+  "run": "adaptformer",
+  "method": "adaptformer",
+  "r_layer": null,
+  "consistency": false,
+  "teacher_ckpt": null,
+  "variant": {
+    "cons_weight": 1.0,
+    "cons_temp": 1.0,
+    "full_ce_weight": 1.0,
+    "feat_weight": 0.0,
+    "full_every": 1,
+    "tie_masks": false,
+    "full_no_grad": false,
+    "merge_prob": 1.0,
+    "drop_path": 0.1,
+    "adapter_dropout": 0.1,
+    "val_select": false,
+    "epochs": 100,
+    "eval_every": 25
+  },
+  "seed": 0,
+  "best_acc": 86.56548261642456,
+  "best_epoch": 99,
+  "best_acc_full_branch": null,
+  "gflops": 17.592121344,
+  "latency_ms_per_img": 13.389779968808096,
+  "params_total": 85958416,
+  "params_trainable": 159760,
+  "peak_train_mem_gb": 5.546205043792725,
+  "total_train_time_s": 6492.210608720779,
+  "history": [
+    {
+      "epoch": 24,
+      "acc": 0.6958414912223816,
+      "acc_full": null,
+      "val_acc": null,
+      "train_time_per_it": 1.6927556762695313,
+      "test_time_per_it": 3.4289742882053056,
+      "loss_ce": 0.5810547451178233
+    },
+    {
+      "epoch": 49,
+      "acc": 0.8422309160232544,
+      "acc_full": null,
+      "val_acc": null,
+      "train_time_per_it": 1.6936526889801025,
+      "test_time_per_it": 3.422062879635228,
+      "loss_ce": 0.17169775168100992
+    },
+    {
+      "epoch": 74,
+      "acc": 0.8539089560508728,
+      "acc_full": null,
+      "val_acc": null,
+      "train_time_per_it": 1.6980982290903728,
+      "test_time_per_it": 3.424883240626918,
+      "loss_ce": 0.09310101891557375
+    },
+    {
+      "epoch": 99,
+      "acc": 0.8656548261642456,
+      "acc_full": null,
+      "val_acc": null,
+      "train_time_per_it": 1.6992311611175537,
+      "test_time_per_it": 3.4258543194995985,
+      "loss_ce": 0.06422275478641191
+    }
+  ],
+  "final_acc": 86.56548261642456,
+  "final_acc_full_branch": null,
+  "n_evals": 4
+}
